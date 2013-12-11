@@ -17,8 +17,8 @@ function ejer002(){
 function ejer042 (){
 	
 	/*
-	 * 42.	Escribir un programa que lea 5 notas de alumnos y nos informe cuÃ¡ntos tienen notas mayores 
-	 * 		o iguales a 7 y cuÃ¡ntos menores.
+	 * 42.	Escribir un programa que lea 5 notas de alumnos y nos informe cuántos tienen notas mayores 
+	 * 		o iguales a 7 y cuántos menores.
 	 */
 	volver();
 }
@@ -118,7 +118,7 @@ function ejer (){
 function ejer (){
 	
 	/*
-	 *	 51.	 Se realizÃ³ un censo provincial y se desea procesar la informaciÃ³n obtenida en dicho censo. De cada una 
+	 *	 51.	 Se realizó un censo provincial y se desea procesar la informaciÃ³n obtenida en dicho censo. De cada una 
 	 *	de las personas censadas se tiene la siguiente informaciÃ³n: nÃºmero de documento, edad y sexo ('femenino' o 'masculino')
 
 		Se pide confeccionar un programa que lea los datos de cada persona censada (para finalizar ingresar el valor cero en el nÃºmero de documento) e informar:
