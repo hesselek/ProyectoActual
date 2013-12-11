@@ -1,0 +1,179 @@
+﻿body {
+	text-align:center;
+	width: 75%;
+	margin:auto;
+}
+
+#envoltorio {
+	font-family: Verdana, Sans-Serif, Arial; 
+	text-align: left;
+	font-size: 9pt;
+}
+
+h2{
+	border-bottom: solid 1px #2C6877;
+	padding-bottom: 7px;
+	margin-bottom: 25px;
+}
+h3{
+	color:#7E5858
+}
+
+.error{
+	color:#BE2A2A;
+}
+
+#cabecera {
+	
+	height: 109px;
+	background-image: url(../imagenes/images.jpeg);
+	background-repeat: no-repeat;
+	text-align: right;
+	border-top: solid 1px black;
+	border-bottom: solid 1px black;
+
+}
+
+#cabecera #titulo {
+	color: #587585;
+font-size: 25pt;
+font-weight: bold;
+padding: 10px;
+text-shadow: 2px 4px 6px #555;
+}
+
+#menu {
+	width: 23%;
+	margin-top: 60px;
+}
+
+#menu ul {
+	padding: 0px;
+	margin: 0px;
+	float:left;
+}
+
+#menu li {
+	list-style-type: none;
+}
+
+#menu li a {
+	display: block;
+	background-color: #2C6877;
+	padding: 10px;
+	padding-left: 20px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	border-bottom: solid 1px black;
+	border-right: solid 1px black;
+	min-width: 200px;
+}
+
+
+#menu li a:hover{
+	background-color: #003D4C;
+}
+
+#contenido {
+	width: 74%;
+	margin-top: 2px;
+	font-size: 10pt;
+	color: #454545;
+	float:right;
+	min-height: 450px;
+}
+
+#contenido h1 {
+	text-align: right;
+	color: #003D4C;
+	font-size: 12pt;
+	margin-bottom: 20px;
+}
+
+#pie {
+	width: 100%;
+	height: 20px;
+	font-size: 11px;
+	text-align: center;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: white;
+	background-color: #003D4C;
+	border-top: solid 1px black;
+	border-bottom: solid 1px black;
+}
+input{
+	float:left;
+	margin-bottom:5px;
+	width: 150px;
+}
+
+#label_eq{
+		
+margin-left: 70px;
+width: 105px;
+
+
+
+}
+table{
+	margin-left: 70px;
+}
+td{
+	min-width: 100px;
+}
+th{
+	border-bottom: solid 1px #2C6877;
+}
+
+label{
+	width: 165px;
+float: left;
+margin-bottom:5px;
+display: block;
+font-weight: bold;
+padding: 5px;
+}
+.boton{
+	display: block;
+	background-color: #2C6877;
+	padding: 5px;
+	padding-left: 15px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	border-bottom: solid 1px black;
+	border-right: solid 1px black;
+	cursor: pointer;
+
+}
+#contenido a{
+	
+	background-color: #2C6877;
+	padding: 5px;
+	padding-left: 15px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	border-bottom: solid 1px black;
+	border-right: solid 1px black;
+
+}
+input[type=radio]{
+  padding-left: 5px;
+padding-right: 5px;
+border-radius: 15px;
+-webkit-appearance: button;
+border: solid 1px #2C6877;
+margin-right: 12px;
+margin-left: 30px;
+margin-top: 7px;
+width:15px;
+height:15px;
+}
+
+.goles{
+	width: 220px;
+}
