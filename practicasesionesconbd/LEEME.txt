@@ -1,0 +1,6 @@
+NOTA IMPORTANTE
+===============
+
+Para el correcto funcionamiento de la inserción de noticias
+se puede crear una subcarpeta de nombre 'img' debajo de la carpeta
+.Allí se guardan las imagenes que están almacenadas en un momento dado en la bd
