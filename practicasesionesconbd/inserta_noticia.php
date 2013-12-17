@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 	<head>
-		<title>Generación de Nocicias Página principla</title>
+		<title>Generación de Nocicias - Insertar Noticia</title>
 		<link href="estilo.css" rel="stylesheet" type="text/css" />
 	</head>
 
