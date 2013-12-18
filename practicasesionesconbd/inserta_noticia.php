@@ -4,12 +4,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 	<head>
-		<title>Generación de Nocicias - Insertar Noticia</title>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-type" />
+		<title>Gestion de Nocicias - Insertar Noticia</title>
 		<link href="estilo.css" rel="stylesheet" type="text/css" />
 	</head>
 
 	<body>
-		<form class="entrada">
+		<h1>Gestión de Noticias</h1>
+		<h2>Insertar nueva noticia</h2>
+		<form class="borde">
 			<label for="nombre">Usuario</label>
 			<input type="text" name="nombre" />
 			<label for="clave">Clave</label>

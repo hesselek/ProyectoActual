@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-type" />
 		<title>Generación de Nocicias - Consultar noticia</title>
 		<link href="estilo.css" rel="stylesheet" type="text/css" />
 	</head>

@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 	<head>
-		<title>Generación de Nocicias - Eliminar noticia</title>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-type" />
+		<title>Gestion de Nocicias - Eliminar noticia</title>
 		<link href="estilo.css" rel="stylesheet" type="text/css" />
 	</head>
 
