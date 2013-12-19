@@ -10,3 +10,30 @@
 body {
 
 }
+.encabezado{
+	background:#333333;
+	
+}
+.encabezado form{
+	
+	color:#CCCCCC;
+}
+
+#demo{
+	background:#666666;
+	padding-top: 10px;
+	background-image: linear-gradient(to top, rgb(60, 60, 60) 0px, rgb(34, 34, 34) 100%);
+	background-repeat: repeat-x;
+	-webkit-box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
+box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
+}
+
+/*===========================================================
+ * 					COLORES
+ * =========================================================
+ */
+.darkblue{
+	color:#336699;
+	
+}
