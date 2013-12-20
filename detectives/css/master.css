@@ -29,6 +29,14 @@ body {
 -moz-box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
 box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
 }
+.footer{
+	adding-top: 10px;
+	background-image: linear-gradient(to botom, rgb(60, 60, 60) 0px, rgb(34, 34, 34) 100%);
+	background-repeat: repeat-x;
+	-webkit-box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
+box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
+}
 
 
 input[type=checkbox] {
