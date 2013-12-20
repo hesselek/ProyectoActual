@@ -13,6 +13,7 @@ body {
 .encabezado{
 	background:#333333;
 	
+	
 }
 .encabezado form{
 	
@@ -20,7 +21,7 @@ body {
 }
 
 #demo{
-	background:#666666;
+	/*background:#666666;*/
 	padding-top: 10px;
 	background-image: linear-gradient(to top, rgb(60, 60, 60) 0px, rgb(34, 34, 34) 100%);
 	background-repeat: repeat-x;
@@ -28,6 +29,29 @@ body {
 -moz-box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
 box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
 }
+
+
+input[type=checkbox] {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+}
+#registro{
+	position:absolute;
+	color:#CCCCCC;
+	z-index: 10;
+}
+
+/* Default State */
+
+
+/* Toggled State */
+input[type=checkbox]:checked ~ #OTRO {
+   opacity:0;
+  transition:opacity 0.3s linear;*
+ }
+
+
 
 /*===========================================================
  * 					COLORES
