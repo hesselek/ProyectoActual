@@ -10,11 +10,13 @@
 body {
 
 }
+
 .encabezado{
 	background:#333333;
 	
 	
 }
+
 .encabezado form{
 	
 	color:#CCCCCC;
@@ -26,9 +28,10 @@ body {
 	background-image: linear-gradient(to top, rgb(60, 60, 60) 0px, rgb(34, 34, 34) 100%);
 	background-repeat: repeat-x;
 	-webkit-box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
--moz-box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
-box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
+	-moz-box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
+	box-shadow: inset 0px -8px 16px -4px rgba(0,0,0,0.75);
 }
+
 .footer{
 	adding-top: 10px;
 	background-image: linear-gradient(to botom, rgb(60, 60, 60) 0px, rgb(34, 34, 34) 100%);
@@ -58,8 +61,58 @@ input[type=checkbox]:checked ~ #OTRO {
    opacity:0;
   transition:opacity 0.3s linear;*
  }
+.lateral{
+	background: #99CCFF;
+	opacity: 0.3;
+}
+/*  ==============================================================
+ * 			Efectos para las cajas
+ * ==============================================================
+ */
+.servicios a{
+	text-decoration: none;
+}
+.servicios:hover{
+	color:#99CCFF;
+	background:#666666;
 
+	-webkit-box-shadow: 6px 6px 6px rgba(20, 20, 20, 0.75);
+	-moz-box-shadow:    6px 6px 6px rgba(20, 20, 20, 0.75);
+	box-shadow:         6px 6px 6px rgba(20, 20, 20, 0.75);
+	transition: background 0.5s ease-in-out,box-shadow 0.5s ease-in-out;
+	
+}
+.servicios:hover ul{
+	
+	color:white;
+	transition: color 0.5s ease-out;
+}
 
+.servicios:hover h3{
+	color:#99CCFF;
+	transition: color 0.5s ease-in-out;
+}
+
+.servicios ul{
+	list-style:none;
+   color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+   transition: color 0.5s ease-in-out;
+}
+
+.servicios{
+	margin-bottom:10px;
+	-webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+	padding:15px;
+	background: #999999;
+	
+	-webkit-box-shadow: 3px 3px 3px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    3px 3px 3px rgba(50, 50, 50, 0.75);
+	box-shadow:         3px 3px 3px rgba(50, 50, 50, 0.75);
+	transition: background 0.5s ease-in-out,box-shadow 0.5s ease-in-out;
+}
 
 /*===========================================================
  * 					COLORES
