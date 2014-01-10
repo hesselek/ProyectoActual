@@ -1,6 +1,9 @@
 <?php
     include("lib_carrito.php");
 	$_SESSION["oCarrito"]->introduce_producto($_GET["id"],$_GET["nombre"],$_GET["precio"]);
+	foreach($_POST['marca'] as $indice=>$valor){
+		echo "<p>".$indice.$valor."</td>";
+	}
 ?>
 <html>
 	<head>
