@@ -1,0 +1,87 @@
+html, body { 
+  background-color: #FDF0D9; 
+  color: black; 
+  font-family: sans-serif;
+  margin: 0px; 
+  padding: 0px; 
+}
+
+h1 { 
+  background-color: #EDA87D; 
+  color: white; 
+  text-transform: uppercase; 
+  margin: 0px; 
+  padding: 5px;
+}
+h2 { 
+  
+  margin: 10px;
+  font-size: 140%;
+  text-align: center; 
+  text-transform: uppercase; 
+}
+
+div#menu { 
+  background-color: #F2BA5F; 
+  color: white; 
+  margin: 0px; 
+}
+
+div#menu ul { 
+  list-style-type: none; 
+  margin: 0px 5px; 
+  padding: 5px; 
+}
+
+div#menu li { 
+  display: inline; 
+  padding: 0px 15px;
+}
+
+div#menu a { 
+  background-color: #F2BA5F; 
+  color: white; 
+  font-weight: bold; 
+}
+div#contenido {
+	width: 74%;
+	margin-left: 16%;
+	margin-top: 20px;
+	font-size: 10pt;
+	color: #454545;
+}
+/*
+div#contenido { 
+  padding: 10px; 
+}
+*/
+img { 
+  border: none; 
+}
+
+tr.neg { 
+  background-color: #F9DDAE; 
+  color: black; 
+}
+
+td, th { 
+  padding-left: 5px; 
+  padding-right: 5px; 
+}
+
+div#pie {
+  border-top: black solid 1px;
+  clear: both;
+  margin: 50px 20px 0px;
+  padding: 5px 0px 0px;
+}
+
+input {
+  font-family: monospace;
+}
+
+.aviso {
+  color: red;
+}
+
+/* Esta parte de la hoja de estilo es específica de este proyecto */
