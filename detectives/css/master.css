@@ -211,7 +211,6 @@ input[type=checkbox]:checked ~ #OTRO {
 }
 .weak-grey{
 	background: #CCCCCC;
-	
 }
 .weak-blue{
 	background:rgba(153,204,255,0.5);
@@ -253,7 +252,7 @@ display: block;
 border-bottom: 3px solid #666666;
 }
 .pad{
-	padding:3px;
+	padding:6px;
 }
 img{
 	margin:5px;
