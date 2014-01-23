@@ -62,8 +62,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     transition: all 0.4s ease-out;
 }
 
-.social { list-style: none; margin-left:50px;}
-.social li { text-indent: -999em; }
+.social { list-style: none; width:70%; margin: 0 auto}
+.social li { text-indent: -999em; margin:-3px; }
 .social li a{ background:#aaa url(../img/social.png) no-repeat top left; display: block; width: 32px; height: 32px; margin-left: 5px; -webkit-border-radius: 16px; -moz-border-radius: 16px; border-radius: 16px;}
 .social li a:hover{ background-color:#999; }
 .social li a.aim{ background-position: 0 0;  }
