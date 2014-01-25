@@ -45,14 +45,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   background:#444 url(../img/social.png) no-repeat top left;
 }
 
-#social {
-  background:url(../img/texture1.png); 
-  border-bottom:1px solid #ccc;
-  -webkit-box-shadow: 5px 0px 5px rgba(0, 0, 0, .2);
-       -moz-box-shadow: 5px 0px 5px rgba(0, 0, 0, .2);
-            box-shadow: 5px 0px 5px rgba(0, 0, 0, .2);
-            overflow: auto;
-}
+
 
 .social li a, input, textarea {
     -webkit-transition: all 0.4s ease-out;
@@ -62,7 +55,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     transition: all 0.4s ease-out;
 }
 
-.social { list-style: none; width:70%; margin: 0 auto}
+.social { list-style: none; padding:40px 0 20px 0px;}
+.social ul{padding-left:0px;}
 .social li { text-indent: -999em; margin:-3px; }
 .social li a{ background:#aaa url(../img/social.png) no-repeat top left; display: block; width: 32px; height: 32px; margin-left: 5px; -webkit-border-radius: 16px; -moz-border-radius: 16px; border-radius: 16px;}
 .social li a:hover{ background-color:#999; }
@@ -181,6 +175,7 @@ input[type=checkbox]:checked ~ #OTRO {
 }
 
 .servicios ul{
+	padding:0;
 	list-style:none;
    color: transparent;
    text-shadow: 0 0 5px rgba(0,0,0,0.5);
@@ -188,11 +183,13 @@ input[type=checkbox]:checked ~ #OTRO {
 }
 
 .servicios{
+	padding:10px 0 10px 0;
+	text-align:center;
 	margin-bottom:10px;
 	-webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
-	padding:15px;
+	
 	background: #999999;
 	
 	-webkit-box-shadow: 3px 3px 3px rgba(50, 50, 50, 0.75);
@@ -217,6 +214,10 @@ input[type=checkbox]:checked ~ #OTRO {
 	
 }
 .weak-blue{
+	text-align:center;
+	-webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
 	background:rgba(153,204,255,0.5);
 	padding:7px;
 	overflow: auto;
@@ -263,4 +264,7 @@ border-bottom: 3px solid #666666;
 }
 img{
 	margin:5px;
+}
+.sub-nav{
+	padding:20px 0 20px 0;
 }
