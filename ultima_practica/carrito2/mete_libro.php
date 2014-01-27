@@ -2,7 +2,7 @@
 include ("lib_carrito.php");
 
 $conexion=new mysqli();
-$conexion->connect("localhost","root","","carritocompra");
+$conexion->connect("localhost","root","root","carritocompra");
 $cadsql="select TITULO,PRECIO from libros where TID=".$_GET['marca'];
 $resultado=$conexion->query($cadsql);
 $salida=$resultado->fetch_array();

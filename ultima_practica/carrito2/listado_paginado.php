@@ -19,7 +19,7 @@ if (!$pagina)
 else
 	$inicio=($pagina-1)*$TAMANO_PAGINA;
 $conexion=new mysqli();
-$conexion->connect("localhost","root","" ,"carritocompra");
+$conexion->connect("localhost","root","root" ,"carritocompra");
 ## OBTENER CUANTAS PAGINAS HAY PARA MOSTRAR ABAJO
 $ssql="SELECT COUNT(*) FROM LIBROS";
 $rs=$conexion->query($ssql);

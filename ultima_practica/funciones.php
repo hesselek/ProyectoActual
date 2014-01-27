@@ -50,8 +50,9 @@ function pie()
 </html>';
 }
 
+//Como la comprobación en la base de datos es solo para saber si el usuario existe, no añadimos nada más
 function validarUser($user,$pass){
-	$dwes = new PDO("mysql:host=localhost;dbname=carritocompra", "root", "");
+	$dwes = new PDO("mysql:host=localhost;dbname=carritocompra", "root", "root");
 	$consulta = $dwes->prepare("SELECT count(*) FROM `usuarios` WHERE `usuario`= ? and `clave`= ?");
 	try{
 		$consulta->execute(array($user,$pass));
@@ -60,6 +61,5 @@ function validarUser($user,$pass){
 	}
 	return $resultado[0];
 	
-	//	$respuesta = $resultado->fetchColumn(); 
-//	echo "esto es el resultado= ".$resultado->rowCount();
+	
 }

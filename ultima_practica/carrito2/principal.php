@@ -6,10 +6,12 @@ include("lib_carrito.php");
    	<title>Carrito con B.D.</title> 
 </head> 
 <body> 
-<?php
+	<h1>Hola mundo</h1>
+ <?php
 $conexion=new mysqli();
-$conexion->connect("localhost","root","" ,"carritocompra");
+$conexion->connect("localhost","root","root" ,"carritocompra");
 //para la paginación de resultados
+
 $TAMANO_PAGINA=10;
 if (isset($_GET["pagina"]))
 	$pagina=$_GET["pagina"];
@@ -20,13 +22,14 @@ if (!$pagina)
 	$inicio=0;}
 else
 	$inicio=($pagina-1)*$TAMANO_PAGINA;
-$conexion=new mysqli();
-$conexion->connect("localhost","root","" ,"carritocompra");
+
 ## OBTENER CUANTAS PAGINAS HAY PARA MOSTRAR ABAJO
-$ssql="SELECT COUNT(*) FROM LIBROS";
+$ssql="SELECT COUNT(*) FROM libros";
 $rs=$conexion->query($ssql);
+ 
 $salida=$rs->fetch_array();
 $num_total_registros=$salida[0];
+
 ##  una vez que sé el nº de registros, calculo el total paginas
 $total_paginas=ceil($num_total_registros/$TAMANO_PAGINA);
 // fin paginacion(1ªparte)
@@ -36,6 +39,7 @@ $cadsql.="WHERE libros.ID = autores.ID AND libros.LID = idioma.LID AND libros.EI
 $cadsql.="ORDER BY autores.AUTOR, idioma.IDIOMA, libros.TITULO ";
 $cadsql.="LIMIT ".$inicio. ",".$TAMANO_PAGINA;
 $resultado=$conexion->query($cadsql);
+printf("Errormessage: %s\n", $conexion->error);
 ## mostrar en formato tabla HTML
 ## CABECERA
 echo "<table border=2 align=center>";
@@ -81,7 +85,7 @@ if ($total_paginas>1)
 
 
 
-?>
+?> 
 <tr><td colspan=3 align="center"><a href="ver_carrito.php">Ver carrito </a></td>
 	<td colspan=3 align="center"><a href="borrar_carrito.php">Anular compra</a></td></tr>
 </table>
