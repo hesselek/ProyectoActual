@@ -55,7 +55,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     transition: all 0.4s ease-out;
 }
 
-.social { list-style: none; padding:40px 0 20px 0px;}
+.social { list-style: none; padding:0px;}
 .social ul{padding-left:0px;}
 .social li { text-indent: -999em; margin:-3px; }
 .social li a{ background:#aaa url(../img/social.png) no-repeat top left; display: block; width: 32px; height: 32px; margin-left: 5px; -webkit-border-radius: 16px; -moz-border-radius: 16px; border-radius: 16px;}
@@ -199,12 +199,15 @@ input[type=checkbox]:checked ~ #OTRO {
 }
 
 /*===========================================================
- * 					COLORES
+ * 					COLORES Y CUADROS
  * =========================================================
  */
 .darkblue{
 	color:#336699;
 	
+}
+.grey{
+	color:#CCCCCC;
 }
 .weak-grey{
 	-webkit-border-radius: 5px;
@@ -266,5 +269,5 @@ img{
 	margin:5px;
 }
 .sub-nav{
-	padding:20px 0 20px 0;
+	padding:20px 0 0 0;
 }
