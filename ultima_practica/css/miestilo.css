@@ -78,10 +78,28 @@ div#pie {
 
 input {
   font-family: monospace;
+  margin-bottom: 7px;
 }
 
 .aviso {
   color: red;
+}
+
+form{
+	margin: 15px;
+	padding:10px;
+	outline:2px solid #F2BA5F;	
+}
+label{
+	width:140px;
+	display:inline-block;
+	font-weight: bold;
+}
+form h3{
+	text-align: center;
+}
+form a{
+	background-color: #F9DDAE; 
 }
 
 /* Esta parte de la hoja de estilo es específica de este proyecto */

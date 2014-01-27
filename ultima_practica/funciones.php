@@ -49,3 +49,17 @@ function pie()
 </body>
 </html>';
 }
+
+function validarUser($user,$pass){
+	$dwes = new PDO("mysql:host=localhost;dbname=carritocompra", "root", "");
+	$consulta = $dwes->prepare("SELECT count(*) FROM `usuarios` WHERE `usuario`= ? and `clave`= ?");
+	try{
+		$consulta->execute(array($user,$pass));
+		$resultado = $consulta->fetch();
+	}catch(PDOException $e){echo $e->getMessage();
+	}
+	return $resultado[0];
+	
+	//	$respuesta = $resultado->fetchColumn(); 
+//	echo "esto es el resultado= ".$resultado->rowCount();
+}
