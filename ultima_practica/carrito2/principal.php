@@ -8,6 +8,7 @@ include("lib_carrito.php");
 <body> 
 	<h1>Hola mundo</h1>
  <?php
+ //printf("Errormessage: %s\n", $conexion->error);
 $conexion=new mysqli();
 $conexion->connect("localhost","root","root" ,"carritocompra");
 //para la paginación de resultados
@@ -39,7 +40,7 @@ $cadsql.="WHERE libros.ID = autores.ID AND libros.LID = idioma.LID AND libros.EI
 $cadsql.="ORDER BY autores.AUTOR, idioma.IDIOMA, libros.TITULO ";
 $cadsql.="LIMIT ".$inicio. ",".$TAMANO_PAGINA;
 $resultado=$conexion->query($cadsql);
-printf("Errormessage: %s\n", $conexion->error);
+
 ## mostrar en formato tabla HTML
 ## CABECERA
 echo "<table border=2 align=center>";

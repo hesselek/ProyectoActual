@@ -101,5 +101,9 @@ form h3{
 form a{
 	background-color: #F9DDAE; 
 }
+.error{
+	border:2px solid red;
+	color:red;
+}
 
 /* Esta parte de la hoja de estilo es específica de este proyecto */

@@ -1,42 +1,47 @@
 <?php
 include('funciones.php');
-session_start();
-cabecera('Registro de usuarios');
+
+//funcion que me permite saber si un usuario está logeado o no
+
+cabecera('Seleccionar Idioma y Categoria');
 echo "<div id=\"contenido\">\n";
-$mensaje = '';
-if(isset($_GET['salir'])){
-	session_destroy();
-	header('Location: entrar.php'); 
-}
-if(isset($_POST['nombre'])){
-	//do something importan about registry
-	$user = validarUser($_POST['nombre'],$_POST['pass']);
-	
-	if($user>0)
-		$_SESSION['usuario'] = $_POST['nombre'];
-	else 
-	  $mensaje = "Login incorrecto. El usuario no existe";
-}
+echo "<h1>Elige las opciones</h1>";
+
 
 if(!isset($_SESSION['usuario'])){
-echo "<h1>Registrate</h1>";?>
-<form action="" method="post">
-	<label for="nombre">Nombre:</label>
-	<input type="text" placeholder="Usuario" name="nombre" autofocus="true"/><br />
-	<label for="pass">Contraseña:</label>
-	<input type="password" placeholder="contraseña" name="pass" /><br />
-	<label for="boton"></label>
-	<input type="submit" value="Entrar" />
-	<div class="error"><?php echo $mensaje ?></div>
-</form>
-
-<?php 
+	echo"<div class='error'><h2>Debes logearte para acceder a esta página</h2></div>";
 }else{
-	echo "<h1>Estas registrado como: ".$_SESSION['usuario']."</h1>";
-	echo "<form action='' method='post'>";
-	echo "<h2>¿Salir?</h2>";
-	echo "<h3><div><a href='entrar.php?salir=yes'><div>Si</a> <a href='entrar.php'>No</a></div> <a href='index.php'>Volver</a></h3>";
-	echo "</form>";
+	$idiomas = getOpciones('idioma');
+	$categorias = getOpciones('categorias');
+ ?>
+ <form action="introducir.php" method="post">
+ 	<label for="lenguajes">Idiomas:</label>
+ 	<select name="lenguajes">
+ 		<option value=""></option>
+ 		
+ 		<?php 
+ 			foreach ($idiomas as $key => $val) {
+ 				echo "<option value='".$val['LID']."'>".$val['IDIOMA']."</option>";
+			 }
+ 		?>
+ 		<option value ="0">Todos</option>
+ 	</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<label for="categorias">Categorías:</label>
+ 	<select name="categorias">
+ 		<option value=""></option>
+ 		<?php 
+ 			foreach ($categorias as $key => $val) {
+ 				echo "<option value='".$val['id_categoria']."'>".$val['nom_categoria']."</option>";
+			 }
+ 		?>
+ 		<option value ="0">Todos</option>
+ 	</select><br />
+ 	
+ 	<input type="submit" value="Enviar" />
+ </form>
+
+
+<?php
 }
 echo "</div>";
 pie();

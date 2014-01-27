@@ -1,4 +1,6 @@
 <?php
+//incluido aqui para no tener que arrastrarlo por todos los scripts
+session_start();
 function cabecera($texto) 
 {
     print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?".">
@@ -50,16 +52,39 @@ function pie()
 </html>';
 }
 
-//Como la comprobación en la base de datos es solo para saber si el usuario existe, no añadimos nada más
+//funcion que me permite saber si un usuario está logeado o no
+function ckLog(){
+	if(!isset($_SESSION['usuario']))
+		
+		header('Location: index.php'); 
+}
+
+//Recogemos el nombre de usuario y el id, que utilizaremos más adelante.
 function validarUser($user,$pass){
 	$dwes = new PDO("mysql:host=localhost;dbname=carritocompra", "root", "root");
-	$consulta = $dwes->prepare("SELECT count(*) FROM `usuarios` WHERE `usuario`= ? and `clave`= ?");
+	$consulta = $dwes->prepare("SELECT usuario, id FROM `usuarios` WHERE `usuario`= ? and `clave`= ?");
 	try{
 		$consulta->execute(array($user,$pass));
-		$resultado = $consulta->fetch();
-	}catch(PDOException $e){echo $e->getMessage();
+		$resultado = $consulta->fetch(PDO::FETCH_ASSOC);
+	}catch(PDOException $e){
+		echo $e->getMessage();
 	}
-	return $resultado[0];
+	$dwes = null;
+	return $resultado;
+		
+}
+//funcion que me devuelve los lenguajes y las categorias (multipropósito)
+function getOpciones($table){
+	$dwes = new PDO("mysql:host=localhost;dbname=carritocompra", "root", "root");
 	
+	try{
+		$consulta = $dwes->query("SELECT * from $table");
+		$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
+	}catch(PDOException $e){
+		echo $e->getMessage();
+	}
+	$dwes = null;
+	return $resultado;
+		
 	
 }
