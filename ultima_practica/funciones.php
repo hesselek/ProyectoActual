@@ -7,7 +7,7 @@ function cabecera($texto)
 <html xmlns=\"http://www.w3.org/1999/xhtml\">
 <head>
   <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />
-  <title>Menú - $texto</title>
+  <title>Menu - $texto</title>
   <link href=\"css/miestilo.css\" rel=\"stylesheet\" type=\"text/css\" />
 </head>
 
@@ -24,8 +24,8 @@ function cabecera($texto)
 <ul>
    <font size=1>
   <li><a href=\"index.php\">Página inicial</a></li>
-  <li><a href=\"1.php\">Entrar</a></li>
-  <li><a href=\"crear.php\">Asignación de imagénes</a></li>
+  <li><a href=\"entrar.php\">Entrar</a></li>
+  <li><a href=\"crear.php\">Asignación de imágenes</a></li>
   <li><a href=\"introducir.php\">Comprar</a></li>
   <li><a href=\"visualizar.php\">Mis pedidos</a></li>
   </font>
