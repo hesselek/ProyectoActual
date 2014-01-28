@@ -1,5 +1,4 @@
 <?php
-session_start();
 class carrito
 {
 //atributos de la clase

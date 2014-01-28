@@ -6,9 +6,9 @@ include("lib_carrito.php");
    	<title>Carrito con B.D.</title> 
 </head> 
 <body> 
-	<h1>Hola mundo</h1>
+	<br />
  <?php
- //printf("Errormessage: %s\n", $conexion->error);
+ //
 $conexion=new mysqli();
 $conexion->connect("localhost","root","root" ,"carritocompra");
 //para la paginación de resultados
@@ -34,10 +34,28 @@ $num_total_registros=$salida[0];
 ##  una vez que sé el nº de registros, calculo el total paginas
 $total_paginas=ceil($num_total_registros/$TAMANO_PAGINA);
 // fin paginacion(1ªparte)
-$cadsql="SELECT libros.TID, autores.AUTOR, idioma.IDIOMA, libros.TITULO, editorial.NOMBRE, libros.PRECIO ";
-$cadsql.="FROM libros, autores, idioma, editorial ";
-$cadsql.="WHERE libros.ID = autores.ID AND libros.LID = idioma.LID AND libros.EID = editorial.EID ";
-$cadsql.="ORDER BY autores.AUTOR, idioma.IDIOMA, libros.TITULO ";
+$cadsql="SELECT libros.TID, autores.AUTOR, idioma.IDIOMA, libros.TITULO, categorias.nom_categoria, 
+editorial.NOMBRE, libros.PRECIO, fotos.imagen
+FROM libros
+INNER JOIN autores ON libros.ID = autores.ID
+INNER JOIN idioma ON libros.LID = idioma.LID
+INNER JOIN categorias ON libros.CATEGORIA = categorias.id_categoria
+INNER JOIN editorial ON libros.EID = editorial.EID
+LEFT JOIN fotos ON libros.TID = fotos.num_ident";
+
+if($_SESSION['lenguajes']!=0 || $_SESSION['categorias']!=0)
+$cadsql.=" WHERE ";
+if($_SESSION['lenguajes']!=0)
+$cadsql.=" libros.LID =".$_SESSION['lenguajes'];
+if($_SESSION['lenguajes']!=0 && $_SESSION['categorias']!=0)
+$cadsql .= " AND ";
+
+if($_SESSION['categorias']!=0)
+$cadsql.=" libros.CATEGORIA =".$_SESSION['categorias'];
+
+$cadsql.= " ORDER BY autores.AUTOR, idioma.idioma, libros.TITULO ";
+
+
 $cadsql.="LIMIT ".$inicio. ",".$TAMANO_PAGINA;
 $resultado=$conexion->query($cadsql);
 
@@ -60,7 +78,7 @@ while ($salida=$resultado->fetch_array())
 		echo "<td>".$salida[$i]."</td>";
 	}
 	echo "<td><a href='mete_libro.php?marca=$salida[0]'>
-	<img src='carrito.jpg' width=30 heigth=20></a></td>";
+	<img src='carrito2/images/Carrito.jpg' width=30 heigth=20></a></td>";
 	echo "</tr>";
 }
 
@@ -77,7 +95,7 @@ if ($total_paginas>1)
 					echo $i;
 				else
 					// coloco indice para ir a otra página
-					echo "<a href=principal.php?pagina=".$i."> ". $i ." </a>";
+					echo "<a href=introducir.php?pagina=".$i."> ". $i ." </a>";
 				
 			}
 			echo "</td></tr>";
