@@ -1,6 +1,7 @@
 
 //Lo primero, crear un libro nuevo...
 var miLibro = new Libro();
+var flStado = 1;
 
 //creamos unos cuantos servicios y  productos y fa
 
@@ -8,6 +9,7 @@ var miLibro = new Libro();
 function start () {
   initializeData();
   initializeEvents();
+  status();
 }
 
 function CargarLista(lista){
@@ -31,6 +33,37 @@ function CargarLista(lista){
 	}
 	
 }
+function status(){
+	switch(flStado){
+		case 1:
+			bloquear('linea',true);
+			bloquear('listar');
+			break;
+		case 2:
+			bloquear('cabecera',false);
+			bloquear('listar',false);
+			break;
+		case 3:
+			bloquear('cabecera',true);
+			bloquear('linea',true);
+			break;
+	}
+	
+	}
+function bloquear(formulario,limpiar){
+	
+	var form1 = document.getElementById(formulario);
+	var sAux = '';
+	for (i=0;i<form1.elements.length;i++)
+	{
+		form1.elements[i].disabled=true;
+		if(limpiar)
+		form1.elements[i].value = '';
+		if(form1.elements[i].type='radio')
+			form1.elements[i].checked=false;
+		
+	}
 
+}
 
 window.onload = start;

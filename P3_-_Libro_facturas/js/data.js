@@ -1,4 +1,6 @@
-//aqui estan los datos del programa y algunas facturas de prueba
+/*
+ * 	Variables Globales
+ */
 
 	var lsServicios = new List();
 	var	lsProductos = new List();
@@ -59,8 +61,10 @@ function initializeEvents(){
 	 		
            var radio_productos = document.getElementById('r_productos');
             var radio_servicios = document.getElementById('r_servicios');
+            var select_option = document.getElementById('selectProd');
             radio_servicios.addEventListener ("change", RadioCambio, false);
             radio_productos.addEventListener ("change", RadioCambio, false);
+            select_option.addEventListener("change", CambioSelect,false);
             
 }
 
@@ -72,4 +76,10 @@ function RadioCambio (event) {
             else {
                 CargarLista(lsProductos);
             }
+}
+
+function CambioSelect (event){
+	var valor = event.target;
+	
+	alert('de momento, bien'+valor.value+'  '+valor[valor.selectedIndex].text);
 }
