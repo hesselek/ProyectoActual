@@ -36,24 +36,34 @@ function CargarLista(lista){
 function status(){
 	switch(flStado){
 		case 1:
-			bloquear('linea',true);
-			bloquear('listar');
+			Bloquear('linea',true);
+			Bloquear('listar');
+			Desbloquear('cabecera');
 			break;
 		case 2:
-			bloquear('cabecera',false);
-			bloquear('listar',false);
+			Bloquear('cabecera',false);
+			Bloquear('listar',false);
+			Desbloquear('linea');
 			break;
 		case 3:
-			bloquear('cabecera',true);
-			bloquear('linea',true);
+			Bloquear('cabecera',true);
+			Bloquear('linea',true);
+			Desbloquear('listar');
 			break;
 	}
 	
 	}
-function bloquear(formulario,limpiar){
+function Desbloquear (formulario) {
+  var form2 = document.getElementById(formulario);
+  for (i=0;i<form2.elements.length;i++)
+	{
+		form2.elements[i].disabled=false;
+	}
+}
+function Bloquear(formulario,limpiar){
 	
 	var form1 = document.getElementById(formulario);
-	var sAux = '';
+	
 	for (i=0;i<form1.elements.length;i++)
 	{
 		form1.elements[i].disabled=true;
@@ -61,6 +71,12 @@ function bloquear(formulario,limpiar){
 		form1.elements[i].value = '';
 		if(form1.elements[i].type='radio')
 			form1.elements[i].checked=false;
+		if(form1.elements[i].type='select'){
+			var selNodo = form1.elements[i];
+			while (selNodo.firstChild) {
+    			selNodo.removeChild(myNode.firstChild);
+			}
+		}
 		
 	}
 

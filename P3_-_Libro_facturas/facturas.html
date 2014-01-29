@@ -29,15 +29,22 @@
   		Nombre<input type="text" /><br />
   		Nif<input type="text" /><br />
   		Dirección<input type="text" /><br />
-  		<input type="submit" />
+  		<input type="button" value="enviar" id="envCabecera" />
   	</form>
   	<form id="linea">	
   		Servicios <input type="radio" id="r_servicios" value="serv" name ="tipo" />  
   		 Productos <input type="radio" id="r_productos" value="prod" name ="tipo" />
   		<select id="selectProd"></select>
+  		<input type="button" id="envFactura" value="Aceptar" />
+  		<input type="button" id="canFactura" value="Cancelar" />
+
+
   	</form>
   	<form id='listar'>
-  		
+  		<input type="button" id="firs" value="<<" />
+  		<input type="button" id="previous" value="<" />
+  		<input type="button" id="next" value=">" />
+  		<input type="button" id="last" value=">>" />
   	</form>
   	
   </body>

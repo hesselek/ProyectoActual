@@ -66,6 +66,12 @@ function initializeEvents(){
             radio_productos.addEventListener ("change", RadioCambio, false);
             select_option.addEventListener("change", CambioSelect,false);
             
+            var inputs = document.getElementsByTagName('input');
+            for(var i=0;i<inputs.length;i++){
+            	alert(inputs[i].type);
+            	alert(inputs[i].id);
+            }
+            
 }
 
 function RadioCambio (event) {
