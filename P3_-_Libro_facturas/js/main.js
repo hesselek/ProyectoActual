@@ -5,3 +5,4 @@ var miLibro = new Libro();
 //creamos unos cuantos servicios y  productos y fa
 
 
+initializeData();

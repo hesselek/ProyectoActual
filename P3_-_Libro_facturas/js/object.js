@@ -57,7 +57,7 @@ function List() {
    this.start = List.nodo(); 
    this.end = this.start; 
   } else { 
-   this.end.next = List.makeNode(); 
+   this.end.next = List.nodo(); 
    this.end = this.end.next; 
   } ; 
   this.end.data = data; 
@@ -82,7 +82,7 @@ function List() {
  }; 
 
  List.prototype.insertAsFirst = function(d) { 
-  var temp = List.makeNode(); 
+  var temp = List.node(); 
   temp.next = this.start; 
   this.start = temp; 
   temp.data = d; 
@@ -126,7 +126,8 @@ function List() {
    current = current.next; 
   } 
  };
-} */
-var miProducto = new producto(12.3,"Esta es mi descripcion");
+} 
+var miProducto = new Producto(12.3,"Esta es mi descripcion");
 alert(miProducto.descripcion);
-var miLineaProducto = new lineaProducto(miProducto);
+var miLineaProducto = new LineaProducto(miProducto,3);*/
+

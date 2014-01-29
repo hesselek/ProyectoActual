@@ -25,7 +25,7 @@ else
 	$inicio=($pagina-1)*$TAMANO_PAGINA;
 
 ## OBTENER CUANTAS PAGINAS HAY PARA MOSTRAR ABAJO
-$ssql="SELECT COUNT(*) FROM libros";
+$ssql = "SELECT COUNT(*) FROM libros";
 $rs=$conexion->query($ssql);
  
 $salida=$rs->fetch_array();
@@ -44,14 +44,13 @@ INNER JOIN editorial ON libros.EID = editorial.EID
 LEFT JOIN fotos ON libros.TID = fotos.num_ident";
 
 if($_SESSION['lenguajes']!=0 || $_SESSION['categorias']!=0)
-$cadsql.=" WHERE ";
+	$cadsql.=" WHERE ";
 if($_SESSION['lenguajes']!=0)
-$cadsql.=" libros.LID =".$_SESSION['lenguajes'];
+	$cadsql.=" libros.LID =".$_SESSION['lenguajes'];
 if($_SESSION['lenguajes']!=0 && $_SESSION['categorias']!=0)
-$cadsql .= " AND ";
-
+	$cadsql .= " AND ";
 if($_SESSION['categorias']!=0)
-$cadsql.=" libros.CATEGORIA =".$_SESSION['categorias'];
+	$cadsql.=" libros.CATEGORIA =".$_SESSION['categorias'];
 
 $cadsql.= " ORDER BY autores.AUTOR, idioma.idioma, libros.TITULO ";
 
