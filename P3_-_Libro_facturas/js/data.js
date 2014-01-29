@@ -1,4 +1,9 @@
 //aqui estan los datos del programa y algunas facturas de prueba
+
+	var lsServicios = new List();
+	var	lsProductos = new List();
+
+
 function initializeData(){
 	//lo ideal sería que los datos que aqu� se muestran se pasasen desde la base de datos
 	/**
@@ -22,8 +27,7 @@ function initializeData(){
 	/*
 	 * creamos dos listas y a�adimos los servicios
 	 */
-	var lsServicios = new List();
-	var	lsProductos = new List();
+	
 	
 	lsServicios.add(ser1);
 	lsServicios.add(ser2);
@@ -41,7 +45,7 @@ function initializeData(){
 	 * comprobamos que funciona
 	 */
 	var producto = lsProductos.start;
-	while(producto !=null){
+/*	while(producto !=null){
 		document.write(producto.data.descripcion+'<br />');
 		producto = producto.next;
 	}
@@ -49,5 +53,23 @@ function initializeData(){
 	while(servicio !=null){
 		document.write(servicio.data.descripcion+'<br />');
 		servicio = servicio.next;
-	}
+	}*/
+}
+function initializeEvents(){
+	 		
+           var radio_productos = document.getElementById('r_productos');
+            var radio_servicios = document.getElementById('r_servicios');
+            radio_servicios.addEventListener ("change", RadioCambio, false);
+            radio_productos.addEventListener ("change", RadioCambio, false);
+            
+}
+
+function RadioCambio (event) {
+          var radio = event.target;
+           if (radio.value === 'serv') {
+                CargarLista(lsServicios);
+            }
+            else {
+                CargarLista(lsProductos);
+            }
 }
