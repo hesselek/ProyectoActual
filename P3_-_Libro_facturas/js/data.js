@@ -35,9 +35,19 @@ function initializeData(){
 	var cli4 = new Cliente("C/Roble Nº 5, 2º-B","33344412S","Román del Pino Seco");
 	
 	/*
+	 *  Lineas
 	 * 
 	 */
-	
+	var li1 = new LineaProducto();
+	var li2 = new LineaServicio();
+	var li3 = new LineaProducto();
+	var li4 = new LineaServicio();
+	var li5 = new LineaProducto();
+	var li6 = new LineaServicio();
+	var li7 = new LineaProducto();
+	var li8 = new LineaServicio();
+	var li9 = new LineaProducto();
+	var li10 = new LineaServicio();
 	/*
 	 * añadimos los servicios, los clientes y las facturas a las listas creadas:
 	 */

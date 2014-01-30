@@ -24,14 +24,19 @@ function Linea(oConcepto){
 	this.descripcion = oConcepto.descripcion;
 }
 
-function LineaProducto (oConcepto,iUnidades) {
+function LineaProducto(oConcepto,iUnidades) {
 	Call(this,oConcepto);
 	this.cantidad = iUnidades;
+	this.preciototal = iUnidades*this.precio;
 }
+
+LineaProducto.prototype = new Linea();
 
 function LineaServicio(oConcepto,iUnidades) {
 	Call(this,oConcepto);
 }
+
+LineaServicio.prototype = new Linea();
 
 function Factura (oCliente,iCodigo) {
 	this.cliente = oCliente;
