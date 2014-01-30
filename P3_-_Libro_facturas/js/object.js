@@ -36,12 +36,17 @@ function LineaServicio(oConcepto,iUnidades) {
 function Factura (oCliente,iCodigo) {
 	this.cliente = oCliente;
 	this.codigo = iCodigo;
+	this.lineaFactura = new List();
   
 }
 
 
-// y ahora, una peque�a implementacion de una clase tipo Linked List.., que me permite una mejor implementacion
-// y un objeto reutilizable.
+/*
+ *   He creado lo que sería la implementación de una Linked List en javascript, lo que me va a permitir
+ *   una manera más sencilla de acceder a los objetos que, de otra manera, se almacenarían en un array.
+ *   Además, de esta forma, no hay que escribir funciones para añadir o borrar clientes y líneas a las facturas,
+ * 	 ni facturas al libro, ya que estas funciones son parte del objeto List.  
+ */
 
 function List() {
  List.nodo = function() { 

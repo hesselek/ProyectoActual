@@ -27,7 +27,19 @@ function initializeData(){
 	var ser5 = new Servicio(16.70,'Ampliación');
 	
 	/*
-	 * creamos dos listas y a�adimos los servicios
+	 * Clientes
+	 */
+	var cli1 = new Cliente("C/Olmo Nº 15","77755522Z","Margarita del Monte Romero");
+	var cli2 = new Cliente("C/Peral Nº 7, 4º-D","55566678D","Manuel Gracia Suelta");
+	var cli3 = new Cliente("C/Encina Nº 8, 1º-A", "00099933R","Encarnación de Dios Avemaría");
+	var cli4 = new Cliente("C/Roble Nº 5, 2º-B","33344412S","Román del Pino Seco");
+	
+	/*
+	 * 
+	 */
+	
+	/*
+	 * añadimos los servicios, los clientes y las facturas a las listas creadas:
 	 */
 	
 	
@@ -65,14 +77,25 @@ function initializeEvents(){
             radio_servicios.addEventListener ("change", RadioCambio, false);
             radio_productos.addEventListener ("change", RadioCambio, false);
             select_option.addEventListener("change", CambioSelect,false);
-            
+         
+         
+         /*
+          * Esta parte me permite generar todos los eventos de los botones de una vez, sin tener que repetirlos.
+          * Es mas, si añadimos un nuevo botón, solo tenemos que crear la función asociada al evento, ya que este
+          * se generará automáticamente. También resulta más fácil determinar que función está asociada a un 
+          * evento específico, pues el nombre de la función coincide con el id del botón. 
+          */
             var inputs = document.getElementsByTagName('input');
             for(var i=0;i<inputs.length;i++){
-            	alert(inputs[i].type);
-            	alert(inputs[i].id);
+            	if(inputs[i].type == 'button'){
+            		document.getElementById(inputs[i].id).addEventListener("click",window[inputs[i].id],false);
+            	}
+            		
+            	   
             }
             
 }
+
 
 function RadioCambio (event) {
           var radio = event.target;
@@ -86,6 +109,4 @@ function RadioCambio (event) {
 
 function CambioSelect (event){
 	var valor = event.target;
-	
-	alert('de momento, bien'+valor.value+'  '+valor[valor.selectedIndex].text);
 }

@@ -1,9 +1,9 @@
 
-//Lo primero, crear un libro nuevo...
-var miLibro = new Libro();
-var flStado = 1;
 
-//creamos unos cuantos servicios y  productos y fa
+var miLibro = new Libro();
+var flStado = 0;
+
+
 
 
 function start () {
@@ -67,7 +67,7 @@ function Bloquear(formulario,limpiar){
 	for (i=0;i<form1.elements.length;i++)
 	{
 		form1.elements[i].disabled=true;
-		if(limpiar)
+		if(limpiar && form1.elements[i].type !='button')
 		form1.elements[i].value = '';
 		if(form1.elements[i].type='radio')
 			form1.elements[i].checked=false;
@@ -81,5 +81,49 @@ function Bloquear(formulario,limpiar){
 	}
 
 }
+
+/**
+ *******************************************************************
+ * *****************FUNCIONES ASOCIADAS A BOTONES*******************
+ * ****************************************************************
+ */
+
+function envCabecera(e){
+	var nodo = e.target;
+	alert('Hola, soy el boton '+nodo.id);
+}
+
+function envFactura(e){
+	var nodo = e.target;
+	alert('Hola, soy el boton '+nodo.id);
+}
+
+function canFactura(e){
+	var nodo = e.target;
+	alert('Hola, soy el boton '+nodo.id);
+}
+
+function first(e){
+	var nodo = e.target;
+	alert('Hola, soy el boton '+nodo.id);
+}
+
+function previous(e){
+	var nodo = e.target;
+	alert('Hola, soy el boton '+nodo.id);
+}
+
+function next(e){
+	var nodo = e.target;
+	alert('Hola, soy el boton '+nodo.id);
+}
+
+function last(e){
+	var nodo = e.target;
+	alert('Hola, soy el boton '+nodo.id);
+}
+
+
+
 
 window.onload = start;
