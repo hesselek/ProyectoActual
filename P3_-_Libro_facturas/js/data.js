@@ -38,16 +38,16 @@ function initializeData(){
 	 *  Lineas
 	 * 
 	 */
-	var li1 = new LineaProducto();
-	var li2 = new LineaServicio();
-	var li3 = new LineaProducto();
-	var li4 = new LineaServicio();
-	var li5 = new LineaProducto();
-	var li6 = new LineaServicio();
-	var li7 = new LineaProducto();
-	var li8 = new LineaServicio();
-	var li9 = new LineaProducto();
-	var li10 = new LineaServicio();
+	var li1 = new LineaProducto(pro1.descripcion,pro1.precio,10);
+	var li2 = new LineaServicio(ser1.descripcion,ser1.precio);
+	var li3 = new LineaProducto(pro2.descripcion,pro2.precio,10);
+	var li4 = new LineaServicio(ser2.descripcion,ser2.precio);
+	var li5 = new LineaProducto(pro3.descripcion,pro3.precio,10);
+	var li6 = new LineaServicio(ser3.descripcion,ser3.precio);
+	var li7 = new LineaProducto(pro4.descripcion,pro4.precio,10);
+	var li8 = new LineaServicio(ser4.descripcion,ser4.precio);
+	var li9 = new LineaProducto(pro5.descripcion,pro5.precio,10);
+	var li10 = new LineaServicio(ser5.descripcion,ser5.precio);
 	/*
 	 * añadimos los servicios, los clientes y las facturas a las listas creadas:
 	 */

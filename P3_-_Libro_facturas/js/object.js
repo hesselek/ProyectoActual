@@ -19,24 +19,25 @@ function Servicio(dbPrecio,sDescripcion){
 	this.descripcion =sDescripcion;
 }
 
-function Linea(oConcepto){
-	this.total = oConcepto.precio;
-	this.descripcion = oConcepto.descripcion;
+function Linea(sDescripcion){
+	this.descripcion = sDescripcion;
+	this.total = 0;
 }
 
-function LineaProducto(oConcepto,iUnidades) {
-	Call(this,oConcepto);
+function LineaProducto(sDescripcion,dbPrecio,iUnidades) {
+	Linea.call(this,sDescripcion);
 	this.cantidad = iUnidades;
-	this.preciototal = iUnidades*this.precio;
+	this.total = iUnidades*dbPrecio;
 }
 
-LineaProducto.prototype = new Linea();
+LineaProducto.prototype = new Linea;
 
-function LineaServicio(oConcepto,iUnidades) {
-	Call(this,oConcepto);
+function LineaServicio(sDescripcion,dbPrecio) {
+	Linea.call(this,sDescripcion);
+	this.total = dbPrecio;
 }
 
-LineaServicio.prototype = new Linea();
+LineaServicio.prototype = new Linea;
 
 function Factura (oCliente,iCodigo) {
 	this.cliente = oCliente;
