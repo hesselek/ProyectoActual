@@ -43,9 +43,40 @@ function Factura (oCliente,iCodigo) {
 	this.cliente = oCliente;
 	this.codigo = iCodigo;
 	this.lineaFactura = new List();
+	var fecha2 = new Date();
+	 fecha2.getDate();
+	this.fecha = fecha2.toLocaleDateString();
   
 }
+Factura.prototype.Total = function () {
+	var total = 0;
+	var lin = this.lineaFactura.start;
+  while(lin !=null){
+		total += parseFloat(lin.data.total);
+		lin = lin.next;
+	}
+	return total;
 
+};
+
+Factura.prototype.Iva = function  () {
+	return this.Total()*21/100;
+  
+};
+
+Factura.prototype.TotalIva = function(){
+	return this.Total() + this.Iva();
+};
+
+function Libro(){
+	 this.listaFacturas = new List();
+	 this.posicion = -1;
+  }
+  
+  Libro.prototype.codigoFactura = function(){
+  	this.posicion = this.posicion +1;
+  	return this.posicion;
+  };
 
 /*
  *   He creado lo que sería la implementación de una Linked List en javascript, lo que me va a permitir
@@ -56,7 +87,7 @@ function Factura (oCliente,iCodigo) {
 
 function List() {
  List.nodo = function() { 
-  return {data: null, next: null}; 
+  return {data: null, next: null, prev:null}; 
  }; 
  
  this.start = null; 
@@ -69,6 +100,7 @@ function List() {
    this.end = this.start; 
   } else { 
    this.end.next = List.nodo(); 
+   this.prev = this.end;
    this.end = this.end.next; 
   } ; 
   this.end.data = data; 
@@ -99,15 +131,7 @@ function List() {
   temp.data = d; 
  };
  
-  function Libro(){
-	 this.listaFacturas = new List();
-	 this.posicion = -1;
-  }
   
-  Libro.prototype.codigoFactura = function(){
-  	this.posicion = this.posicion +1;
-  	return this.posicion;
-  }
 	
 /*
  this.insertAfter = function(t, d) { 

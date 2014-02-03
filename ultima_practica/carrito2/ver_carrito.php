@@ -1,5 +1,4 @@
 <?php
-include ("lib_carrito.php");
 ?>
 <html>
 <head>

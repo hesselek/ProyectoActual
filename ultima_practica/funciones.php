@@ -1,6 +1,7 @@
 <?php
 //incluido aqui para no tener que arrastrarlo por todos los scripts
 session_start();
+include 'carrito2/lib_carrito.php';
 function cabecera($texto) 
 {
     print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?".">
@@ -25,9 +26,9 @@ function cabecera($texto)
 <div id=\"menu\">
 <ul>
    <font size=1>
-  <li><a href=\"index.php\">Página inicial</a></li>
+  <li><a href=\"index.php\">Pï¿½gina inicial</a></li>
   <li><a href=\"entrar.php\">Entrar</a></li>
-  <li><a href=\"crear.php\">Asignación de imágenes</a></li>
+  <li><a href=\"crear.php\">Asignaciï¿½n de imï¿½genes</a></li>
   <li><a href=\"introducir.php\">Comprar</a></li>
   <li><a href=\"visualizar.php\">Mis pedidos</a></li>
   </font>
@@ -44,7 +45,7 @@ function pie()
 
 <div id="pie">
 <address>
-2º D.A.W. 
+2ï¿½ D.A.W. 
 </address>
 
 </div>
@@ -52,14 +53,14 @@ function pie()
 </html>';
 }
 
-//funcion que me permite saber si un usuario está logeado o no
+//funcion que me permite saber si un usuario estï¿½ logeado o no
 function ckLog(){
 	if(!isset($_SESSION['usuario']))
 		
 		header('Location: index.php'); 
 }
 
-//Recogemos el nombre de usuario y el id, que utilizaremos más adelante.
+//Recogemos el nombre de usuario y el id, que utilizaremos mï¿½s adelante.
 function validarUser($user,$pass){
 	$dwes = new PDO("mysql:host=localhost;dbname=carritocompra", "root", "root");
 	$consulta = $dwes->prepare("SELECT usuario, id FROM `usuarios` WHERE `usuario`= ? and `clave`= ?");
@@ -73,7 +74,7 @@ function validarUser($user,$pass){
 	return $resultado;
 		
 }
-//funcion que me devuelve los lenguajes y las categorias (multipropósito)
+//funcion que me devuelve los lenguajes y las categorias (multipropï¿½sito)
 function getOpciones($table){
 	$dwes = new PDO("mysql:host=localhost;dbname=carritocompra", "root", "root");
 	

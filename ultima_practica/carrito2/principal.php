@@ -1,6 +1,3 @@
-<?php 
-include("lib_carrito.php"); 
-?> 
    	<title>Carrito con B.D.</title> 
 	<br />
  <?php
@@ -67,7 +64,7 @@ $resultado=$conexion->query($cadsql);
 ## mostrar en formato tabla HTML
 ## CABECERA
 echo "<table border=2 align=center>";
-echo "<tr><th colspan=7>Productos en la cesta: ".$_SESSION["ocarrito"]->num_productos."</th></tr>";
+echo "<tr><th colspan=8>Productos en la cesta: ".$_SESSION["ocarrito"]->num_productos."</th></tr>";
 echo "<tr><td align=center>Autor</td>";
 echo "<td align=center>Idioma</td>";
 echo "<td align=center>Titulo</td>";
@@ -85,9 +82,9 @@ while ($salida=$resultado->fetch_array())
 		echo "<td>".$salida[$i]."</td>";
 	}
 	if($salida[8]== null){
-		//echo "<td>Aqui va una foto:".$salida[8]."</td>";
+		 echo "<td align='center' ><img src='carrito2/images/no_foto.jpg' width='75' height='75' /></td>";
 	}else {
-		echo "<td><img src='verfoto.php?foto=".$salida[0]."'/></td>";
+		echo "<td align='center'><img src='verfoto.php?foto=".$salida[0]."'/></td>";
 		//echo "<td><a href='verfoto.php?foto=".$salida[0]."'/>ver</a></td>";
 	}
 /*	if($registro['formato']=="image/png"){
@@ -95,7 +92,7 @@ while ($salida=$resultado->fetch_array())
  	}else{
 	  print "<img src='ver.php?n=".$registro['num_ident']."'><br>";
 	}*/
-	echo "<td><a href='mete_libro.php?marca=$salida[0]'>
+	echo "<td><a href='carrito2/mete_libro.php?marca=$salida[0]'>
 	<img src='carrito2/images/Carrito.jpg' width=30 heigth=20></a></td>";
 	echo "</tr>";
 }
@@ -104,7 +101,7 @@ $conexion->close();
 echo "<tr><td colspan=2>Número de registros encontrados: ".$num_total_registros."</td>";
 echo "<td>Se muestran paginas de ". $TAMANO_PAGINA. " registros cada una"."<br>";
 echo "Mostrando pagina ".$pagina." de ".$total_paginas."</td>";
-echo "<td colspan=3 align='center'>";
+echo "<td colspan=5 align='center'>";
 if ($total_paginas>1)
 		{for ($i=1;$i<=$total_paginas;$i++)
 			{
@@ -123,6 +120,7 @@ if ($total_paginas>1)
 
 
 ?> 
-<tr><td colspan=3 align="center"><a href="ver_carrito.php">Ver carrito </a></td>
-	<td colspan=4 align="center"><a href="borrar_carrito.php">Anular compra</a></td></tr>
+<tr><td colspan=4 align="center"><a href="carrito2/ver_carrito.php">Ver carrito </a></td>
+	<td colspan=4 align="center"><a href="carrito2/borrar_carrito.php">Anular compra</a></td></tr>
 </table>
+<?php print_r($_SESSION); ?>
