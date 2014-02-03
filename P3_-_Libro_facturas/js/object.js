@@ -103,6 +103,11 @@ function List() {
 	 this.listaFacturas = new List();
 	 this.posicion = -1;
   }
+  
+  Libro.prototype.codigoFactura = function(){
+  	this.posicion = this.posicion +1;
+  	return this.posicion;
+  }
 	
 /*
  this.insertAfter = function(t, d) { 

@@ -69,6 +69,8 @@ function initializeData(){
 	 * comprobamos que funciona
 	 */
 	var producto = lsProductos.start;
+	miLibro = new Libro();//new Libro();
+	flStado = 0;
 /*	while(producto !=null){
 		document.write(producto.data.descripcion+'<br />');
 		producto = producto.next;
@@ -87,8 +89,13 @@ function initializeEvents(){
             radio_servicios.addEventListener ("change", RadioCambio, false);
             radio_productos.addEventListener ("change", RadioCambio, false);
             select_option.addEventListener("change", CambioSelect,false);
-         
-         
+         	
+         	document.getElementById('nuevaFactura').addEventListener("click",NuevaFactura,false);
+         	document.getElementById('navegar').addEventListener("click",Navegar,false);
+         	document.getElementById('salir').addEventListener("click",Salir,false);
+         	document.getElementById('listadoSimple').addEventListener("click",ListadoSimple,false);
+       		document.getElementById('listadoAgrupado').addEventListener("click",ListadoAgrupado,false);
+       		document.getElementById('unidades').addEventListener("change",ActualizarTotal,false);
          /*
           * Esta parte me permite generar todos los eventos de los botones de una vez, sin tener que repetirlos.
           * Es mas, si añadimos un nuevo botón, solo tenemos que crear la función asociada al evento, ya que este
@@ -109,14 +116,30 @@ function initializeEvents(){
 
 function RadioCambio (event) {
           var radio = event.target;
+          var unidades = document.getElementById('unidades');
            if (radio.value === 'serv') {
                 CargarLista(lsServicios);
+                unidades.disabled = true;
+                unidades.value ='';
+                
+
             }
             else {
                 CargarLista(lsProductos);
+                 unidades.disabled = false;
+
             }
 }
 
 function CambioSelect (event){
 	var valor = event.target;
+	document.getElementById('unidades').value = 1;
+	document.getElementById('precio').value = valor.value;
+	ActualizarTotal();
+	
+}
+
+function ActualizarTotal () {
+	  document.getElementById('totalLinea').value = document.getElementById('unidades').value *
+	  												document.getElementById('precio').value;
 }
