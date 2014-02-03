@@ -1,7 +1,7 @@
 <?php
 include('funciones.php');
 
-//funcion que me permite saber si un usuario está logeado o no
+//funcion que me permite saber si un usuario estï¿½ logeado o no
 
 cabecera('Seleccionar Idioma y Categoria');
 echo "<div id=\"contenido\">\n";
@@ -9,8 +9,10 @@ echo "<h1>Elige las opciones</h1>";
 
 
 if(!isset($_SESSION['usuario'])){
-	echo"<div class='error'><h2>Debes logearte para acceder a esta página</h2></div>";
+	echo"<div class='error'><h2>Debes logearte para acceder a esta pï¿½gina</h2></div>";
 }else{
+	$_SESSION['lenguajes'] = 0;
+	$_SESSION['categorias'] = 0;	
 	$idiomas = getOpciones('idioma');
 	$categorias = getOpciones('categorias');
  ?>
@@ -26,7 +28,7 @@ if(!isset($_SESSION['usuario'])){
  		?>
  		<option value ="0">Todos</option>
  	</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- 	<label for="categorias">Categorías:</label>
+ 	<label for="categorias">CategorÃ­as:</label>
  	<select name="categorias">
  		<option value=""></option>
  		<?php 

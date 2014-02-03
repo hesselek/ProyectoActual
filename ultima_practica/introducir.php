@@ -23,7 +23,7 @@ if(isset($_SESSION['lenguajes']) && isset($_SESSION['categorias'])){
 		
 		
 	}else{
-		echo "<div class='error'><h3>Ocurrió un error,por favor, vuelve a introducir las categorias</h3>";
+		echo "<div class='error'><h3>OcurriÃ³ un error,por favor, vuelve a introducir las categorias</h3>";
 		echo "<a href='entrar.php'>Volver</a>";
 	}
 	
