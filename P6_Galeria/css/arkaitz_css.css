@@ -1,0 +1,100 @@
+        
+/******************************************************
+ ****************ESTILOS EJERCICIO 3
+ * ******************************** 
+ */
+ .offset { overflow: hidden; margin: 20px 0 40px 20px; }
+        
+        .offset div {
+            background-color: #eee;
+            float:left;
+            margin-top: 20px;
+            margin-right: 40px;
+            height: 65px;
+            width:160px;
+            text-align: center;
+        }
+        
+        .examplelabelboxshadow {
+            color: #888;
+            font-size: 20px;
+            position: relative;
+            top: 20px;
+        }
+        
+/**************************************************************
+ ************ESTILOS EJERCICIO 4*****************************
+ * ****************************************************** 
+ */
+.examplemultiplebackgroundsa {
+            width: 500px;
+            height: 250px;
+        } 
+/**************************************************************
+ ************ESTILOS EJERCICIO 5*****************************
+ * ****************************************************** 
+ */
+p { font-size: 2em; margin: 1em; padding: 0 5px; }
+
+
+/**************************************************************
+ ************ESTILOS EJERCICIO *****************************
+ * ****************************************************** 
+ */
+/**************************************************************
+ ************ESTILOS EJERCICIO 7*****************************
+ * ****************************************************** 
+ */
+#container > div { margin-bottom: 10px; border: 1px dotted #000; width: 250px; }
+.box { width: 200px; height: 100px; border: 5px solid gray; background-color: silver; margin: 25px auto; }
+/**************************************************************
+ ************ESTILOS EJERCICIO 8*****************************
+ * ****************************************************** 
+ */
+#container1 { width: 500px; height:500px; position: relative;}
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            font-size: 20px;
+            position:absolute;
+            padding: 5px;
+        }
+        .box:hover {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            color: yellow;
+            font-size: 18px;
+            position:absolute;
+        }
+        .ex01 .box {
+            left: 10px;
+            top: 10px;
+        }
+        .ex02 .box {
+            left: 10px;
+            top: 130px;
+        }
+        .ex03 .box {
+            left: 10px;
+            top: 250px;
+        }
+        .ex04 .box {
+            left: 10px;
+            top: 370px;
+        }
+/**************************************************************
+ ************ESTILOS EJERCICIO *****************************
+ * ****************************************************** 
+ */
+
+/**************************************************************
+ ************ESTILOS EJERCICIO *****************************
+ * ****************************************************** 
+ */
+
+/**************************************************************
+ ************ESTILOS EJERCICIO *****************************
+ * ****************************************************** 
+ */
