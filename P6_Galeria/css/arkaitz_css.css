@@ -102,12 +102,44 @@
 .examplemultiplebackgroundsa {
             width: 500px;
             height: 250px;
+            font-family: Times;
+            text-align: right;
+            background-image: url(../img/ej4/decoration.png), url(../img/ej4/ribbon.png), url(../img/ej4/old_paper.jpg);
+             background-position: left top, right bottom, center;
+            background-repeat: no-repeat;
         } 
+       .examplemultiplebackgroundsa p{
+        	 font-family: Times;
+            text-align: right;
+            font-size:1.2em;
+            font-weight:bold;
+            margin:0px;
+        }
 /**************************************************************
  ************ESTILOS EJERCICIO 5*****************************
  * ****************************************************** 
  */
-p { font-size: 2em; margin: 1em; padding: 0 5px; }
+ .efectoFuentes p{ font-size: 2em; margin: 1em; padding: 0 5px; }
+ /*Nota: como este efecto, en la imagen del arkaiz se parecia como el c.. muy mal, 
+  * he hecho lo que creo que se ajusta mejor a su intención 
+  * 
+  *  Nota: en el caso de mozilla, por lo visto es mejor poner el color delante
+  */
+ .efectoFuentes p:nth-child(1){
+ 	-webkit-text-shadow: black 10px 10px 2px;
+ 	-moz-text-shadow: black 10px 10px 2px;
+ 	text-shadow: 0.02em 0.02em 0.1em black;
+ 	
+ }
+ .efectoFuentes p:nth-child(2){
+ 	
+ }
+  .efectoFuentes p:nth-child(3){}
+  .efectoFuentes p:nth-child(4){}
+  .efectoFuentes p:nth-child(5){}
+  .efectoFuentes p:nth-child(6){}
+ 
+ 
 
 
 /**************************************************************
