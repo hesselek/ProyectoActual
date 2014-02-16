@@ -119,25 +119,44 @@
  ************ESTILOS EJERCICIO 5*****************************
  * ****************************************************** 
  */
- .efectoFuentes p{ font-size: 2em; margin: 1em; padding: 0 5px; }
+ .efectoFuentes p{ font-size: 2em; margin: 1em; padding: 0 5px; font-family: "Times New Roman",Georgia,Serif;font-weight: 500;}
  /*Nota: como este efecto, en la imagen del arkaiz se parecia como el c.. muy mal, 
   * he hecho lo que creo que se ajusta mejor a su intención 
+  * Otra cosa que se le ha olvidado al arkaiz ha sido el de definir el tipo de fuente(fon-family), y su estilo
   * 
-  *  Nota: en el caso de mozilla, por lo visto es mejor poner el color delante
+  *  
   */
  .efectoFuentes p:nth-child(1){
- 	-webkit-text-shadow: black 10px 10px 2px;
- 	-moz-text-shadow: black 10px 10px 2px;
  	text-shadow: 0.02em 0.02em 0.1em black;
  	
  }
  .efectoFuentes p:nth-child(2){
- 	
+ 	color:white;
+ 	text-shadow: 0px 0px 50px rgba(255, 0, 0, 1),1px 1px 4px rgba(253, 0, 0, 1);
  }
-  .efectoFuentes p:nth-child(3){}
-  .efectoFuentes p:nth-child(4){}
-  .efectoFuentes p:nth-child(5){}
-  .efectoFuentes p:nth-child(6){}
+  .efectoFuentes p:nth-child(3){
+  	text-shadow: -5px -5px 5px rgba(255, 0, 0, 1),0px -5px 5px rgba(0, 255, 0, 1),0px 5px 5px rgba(0,0 , 255, 1);
+  }
+  .efectoFuentes p:nth-child(4){
+  	color:white;
+  	background-color: rgb(175,175,175);
+  	/*
+  	text-shadow: 0px 0px 2px black;
+  	o mejor:*/
+  	
+text-shadow: 0px 1px black, 0px -1px  black,1px 0px black,-1px 0px black;
+  	
+  }
+  .efectoFuentes p:nth-child(5){
+  	color:grey;
+  	background-color: grey;
+  	text-shadow:-1px -1px white, 1px 1px black;
+  }
+  .efectoFuentes p:nth-child(6){
+  	color:rgb(175,175,175);
+  	background-color: rgb(175,175,175);
+  	text-shadow:1px 1px white, -1px -1px black;
+  }
  
  
 
@@ -150,49 +169,150 @@
  ************ESTILOS EJERCICIO 7*****************************
  * ****************************************************** 
  */
-#container > div { margin-bottom: 10px; border: 1px dotted #000; width: 250px; }
+#container7 > div { margin-bottom: 10px; border: 1px dotted #000; width: 250px; }
 .box { width: 200px; height: 100px; border: 5px solid gray; background-color: silver; margin: 25px auto; }
+
+#ex01 div:nth-child(2){
+	transform: translatex(100px) translatey(50px);
+}
+#ex01 div:nth-child(1):hover{
+	transform: translatex(100px) translatey(50px);
+}
+
+#ex02 div:nth-child(2){
+	transform: scale(2,2);
+}
+
+#ex02 div:nth-child(1):hover{
+	transform: scale(2,2);
+}
+
+#ex03 div:nth-child(3){
+	transform: rotate(45deg);
+}
+
+#ex03 div:nth-child(4){
+	transform: rotate(45deg);
+	transform-origin:top left;
+}
+
+#ex03 div:nth-child(1):hover{
+	transform: rotate(45deg);
+	
+}
+
+#ex03 div:nth-child(2):hover{
+	transform: rotate(45deg);
+	transform-origin:top left;
+}
+
+#ex04 div:nth-child(2){
+	transform: skewX(35deg);
+	
+}
+
+#ex04 div:nth-child(1):hover{
+	transform: skewX(35deg);
+}
+
 /**************************************************************
  ************ESTILOS EJERCICIO 8*****************************
- * ****************************************************** 
- */
-#container1 { width: 500px; height:500px; position: relative;}
-        .box {
+ * ****************************************************** */
+
+#container8 { width: 500px; height:500px; position: relative;}
+        .box_8 {
             width: 100px;
             height: 100px;
             background-color: red;
             font-size: 20px;
             position:absolute;
             padding: 5px;
+            -webkit-transition: all 0.7s ease-out;
+     		-moz-transition:   	all 0.7s ease-out;
+       		-ms-transition: 	all 0.7s ease-out;
+         	-o-transition: 		all 0.7s ease-out;
+            transition: 		all 0.7s ease-out;
         }
-        .box:hover {
+       #container8:hover .box_8 {
             width: 50px;
             height: 50px;
             background-color: blue;
             color: yellow;
-            font-size: 18px;
-            position:absolute;
+            font-size: 18px;    
+           
         }
-        .ex01 .box {
+          
+        .ex01_8 .box_8 {
             left: 10px;
             top: 10px;
         }
-        .ex02 .box {
+        #container8:hover .ex01_8 .box_8{
+        	top:130px;
+        	left: 400px;
+        }
+        
+        .ex02_8 .box_8 {
             left: 10px;
             top: 130px;
         }
-        .ex03 .box {
+        #container8:hover .ex02_8 .box_8{
+        	top:10px;
+        	left: 400px;
+        }
+        .ex03_8 .box_8 {
             left: 10px;
             top: 250px;
         }
-        .ex04 .box {
+        #container8:hover .ex03_8 .box_8{
+        	top:370px;
+        	left: 400px;
+        }
+        .ex04_8 .box_8 {
             left: 10px;
             top: 370px;
         }
+        #container8:hover .ex04_8 .box_8{
+        	top:250px;
+        	left: 400px;
+        }
+        
 /**************************************************************
- ************ESTILOS EJERCICIO *****************************
+ ************ESTILOS EJERCICIO 9*****************************
  * ****************************************************** 
+	He incluido algunas modificaciones en este ejercicio,
  */
+
+
+ #container9{
+            background: #666 url(../img/ej9/ej09_tree.jpg) no-repeat -60px 0;
+            width: 420px;
+            height: 480px;
+            position: relative;
+        }
+        .snowflake {
+            color: #fff;
+            font-size: 2em;
+            position: absolute;
+        }
+        .snowflake.f1 {
+        	
+            left: 40px;
+            transition-property: opacity 0, bottom 30px;
+    		transition-duration: 5s infinite;
+        }
+        .snowflake.f2 {
+            font-size: 1.8em;
+            left: 120px;
+        }
+        .snowflake.f3 {
+            left: 200px;
+        }
+        .snowflake.f4 {
+            font-size: 1.5em;
+            left: 280px;
+        }
+
+
 
 /**************************************************************
  ************ESTILOS EJERCICIO *****************************
