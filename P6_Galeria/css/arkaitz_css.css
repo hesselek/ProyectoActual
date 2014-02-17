@@ -1,4 +1,3 @@
-        
 /******************************************************
  ****************ESTILOS EJERCICIO 3
  * ******************************** 
@@ -279,7 +278,9 @@ text-shadow: 0px 1px black, 0px -1px  black,1px 0px black,-1px 0px black;
 /**************************************************************
  ************ESTILOS EJERCICIO 9*****************************
  * ****************************************************** 
-	He incluido algunas modificaciones en este ejercicio,
+	He incluido algunas modificaciones en este ejercicio.
+	He usado una sola animación por grupo, por una sencilla razón: el uso de dos animaciones
+	no parcer funcionar muy bien
  */
 
 
@@ -295,24 +296,132 @@ text-shadow: 0px 1px black, 0px -1px  black,1px 0px black,-1px 0px black;
             position: absolute;
         }
         .snowflake.f1 {
-        	
+        	top:-30px;
             left: 40px;
-            transition-property: opacity 0, bottom 30px;
-    		transition-duration: 5s infinite;
+            animation:bajada 4s infinite linear;
+			-webkit-animation:bajada 2s infinite; /*Safari and Chrome*/
+           
         }
         .snowflake.f2 {
+        	left:120px;
+				top:-30px;
             font-size: 1.8em;
-            left: 120px;
+            animation:bajada 4s infinite linear;
+			-webkit-animation:bajada 4s infinite linear; /*Safari Chrome*/             
         }
         .snowflake.f3 {
-            left: 200px;
+            left: 200px;           
+			top:-30px;
+			  animation:bajada 4s infinite linear;
+			-webkit-animation:bajada 4s infinite linear; /*Safari Chrome*/   
         }
         .snowflake.f4 {
             font-size: 1.5em;
             left: 280px;
+				top:-30px;
+				  animation:bajada 4s infinite linear;
+			-webkit-animation:bajada 4s infinite linear; /*Safari Chrome*/   
+       }
+             
+      
+      .snowflake.a {
+        	left:0px;
+        	font-size:0.9em;
+        	color: rgba(255,255,255,1);
+   			text-shadow: 0 0 5px rgba(255,255,255,0.7);
+            
+           
+			top:-480px;
+        
+          animation:bajadaa 24s infinite linear;
+			-webkit-animation:bajadaa 24s infinite linear; /*Safari Chrome*/        
         }
-
-
+        .snowflake.b {
+        		left:60px;
+        	font-size:0.9em;
+        	color: rgba(255,255,255,1);
+   			text-shadow: 0 0 5px rgba(255,255,255,0.7);
+            
+           
+			top:-480px;
+            
+           animation:bajadab 24s 12s  infinite linear;
+			-webkit-animation:bajadb 24s 12s infinite linear; /*Safari Chrome*/          
+        }
+        .snowflake.c {
+        	left:0px;
+        	font-size:0.9em;
+        	color: rgba(255,255,255,1);
+   			text-shadow: 0 0 5px rgba(255,255,255,0.7);
+            
+           
+			top:-500px;
+        
+          animation:bajadac 16s infinite linear;
+			-webkit-animation:bajadac 16s infinite linear; /*Safari Chrome*/        
+        }
+        .snowflake.d {
+        		left:60px;
+        	font-size:0.9em;
+        	color: rgba(255,255,255,1);
+   			text-shadow: 0 0 5px rgba(255,255,255,0.7);
+            
+           
+			top:-500px;
+            
+           animation:bajadad 16s 8s  infinite linear; 
+			-webkit-animation:bajadad 16s 8s infinite linear; /*,movd 16s 8s linear infinite; /*Safari Chrome*/          
+        }
+      
+        @keyframes bajadaa{
+        	20%{left:20px;}
+        	40%{left:10px;}
+        	60%{left:30px;}
+        	75%{opacity:0.5;}
+        	80%{left:20px;}
+        	93%{opacity:0;}
+        	100%{top:480px; left:40px;opacity:0;}
+        }
+        @keyframes bajadab{
+        	20%{left:80px;}
+        	40%{left:75px;}
+        	60%{left:62px;}
+        	75%{opacity:0.5;}
+        	80%{left:79px;}
+        	93%{opacity:0;}
+        	100%{top:480px; left:59px;opacity:0;}
+        }
+        @keyframes bajadac{
+        	20%{left:60px;}
+        	40%{left:120px;}
+        	60%{left:100px;}
+        	75%{opacity:0.5;}
+        	80%{left:110px;}
+        	93%{opacity:0;}
+        	100%{top:480px; left:80px;opacity:0;}
+        }
+        @keyframes bajadad{
+        	20%{left:45px;}
+        	40%{left:65px;}
+        	60%{left:85px;}
+        	75%{opacity:0.5;}
+        	80%{left:105px;}
+        	93%{opacity:0;}
+        	100%{top:480px; left:89px;opacity:0;}
+        }
+		@keyframes bajada{
+			
+			50%{top:240px; opacity: 1}
+			75%{top:360px; opacity: 0.7}
+			93%{opacity:0;}
+			100%{top: 480px; opacity:0;}
+			
+			
+		}
+		
+		
+		
+		
 
 /**************************************************************
  ************ESTILOS EJERCICIO *****************************
@@ -320,6 +429,48 @@ text-shadow: 0px 1px black, 0px -1px  black,1px 0px black,-1px 0px black;
  */
 
 /**************************************************************
- ************ESTILOS EJERCICIO *****************************
+ ************ESTILOS EJERCICIO FINAL 2 *****************************
  * ****************************************************** 
  */
+.start {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 5em;
+}
+
+#clock {
+    position: relative;
+    width: 378px;
+    height: 378px;
+    background-image: url('../img/ejFinal2/clockFace.png');
+    left: 50%;
+    margin: 5em 0 0 -189px;
+}
+
+
+#clock div {
+    position: absolute;
+}
+
+#second img{
+			animation:mover 60s infinite linear; 
+			-webkit-animation:mover 1s infinite linear; /*,movd 16s 8s linear infinite; /*Safari Chrome*/        
+		/*transform-origin: left bottom;*/ 
+}
+
+#minute{
+	animation:mover 3600s infinite linear; 
+			-webkit-animation:mover 3600s infinite linear; /*,movd 16s 8s linear infinite; /*Safari Chrome*/   
+	
+}
+#hour{
+	animation:mover 43200s infinite linear; 
+			-webkit-animation:mover 43200s infinite linear; /*,movd 16s 8s linear infinite; /*Safari Chrome*/   
+	
+}
+@keyframes mover{
+	0%{}
+	100%{
+		transform: rotate(360deg);}
+}
