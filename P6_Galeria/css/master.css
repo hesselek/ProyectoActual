@@ -1,0 +1,115 @@
+/*
+ * Fuentes a utilizar:
+ * font-family: 'Istok Web', sans-serif;
+font-family: 'Pinyon Script', cursive;
+font-family: 'Varela Round', sans-serif;
+font-family: 'Nunito', sans-serif;
+<link href='http://fonts.googleapis.com/css?family=Istok+Web:400,700,400italic|Pinyon+Script|Varela+Round|Nunito' rel='stylesheet' type='text/css'>
+ colores: 
+ ff6400
+ bf6830
+ a64100
+ ff8b40
+ ffaa73
+ * */
+/***************************************************************************
+ * *********************** CABECERA Y PIE DE PAGINA***********************
+ * ***********************************************************************
+ */
+.container.maincontainer{
+	box-shadow:
+	 10px 0px 10px -10px rgba(0,0,0,1),
+	-10px 0px 10px -10px rgba(0,0,0,1);
+	
+}
+.header{
+	
+background: rgb(188,188,188); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(188,188,188,1) 0%, rgba(13,13,13,1) 13%, rgba(1,1,1,1) 50%, rgba(10,10,10,1) 87%, rgba(188,188,188,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(188,188,188,1)), color-stop(13%,rgba(13,13,13,1)), color-stop(50%,rgba(1,1,1,1)), color-stop(87%,rgba(10,10,10,1)), color-stop(100%,rgba(188,188,188,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(188,188,188,1) 0%,rgba(13,13,13,1) 13%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 87%,rgba(188,188,188,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(188,188,188,1) 0%,rgba(13,13,13,1) 13%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 87%,rgba(188,188,188,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(188,188,188,1) 0%,rgba(13,13,13,1) 13%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 87%,rgba(188,188,188,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(188,188,188,1) 0%,rgba(13,13,13,1) 13%,rgba(1,1,1,1) 50%,rgba(10,10,10,1) 87%,rgba(188,188,188,1) 100%); /* W3C */
+	margin-bottom: -10px;	
+	-webkit-box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.75),inset 0px -5px 5px 0px rgba(0, 0, 0, 0.9),inset 0px 5px 5px 0px rgba(0, 0, 0, 0.9);
+	-moz-box-shadow:    0px 5px 5px 0px rgba(50, 50, 50, 0.75),inset 0px -5px 5px 0px rgba(0, 0, 0, 0.9),inset 0px 5px 5px 0px rgba(0, 0, 0, 0.9);
+	box-shadow:         0px 5px 5px 0px rgba(50, 50, 50, 0.75),inset 0px -5px 5px 0px rgba(0, 0, 0, 0.9),inset 0px 5px 5px 0px rgba(0, 0, 0, 0.9);
+
+}
+.header h1{
+	margin:20px 0px 0px 0px;
+	font-size:5em;
+	color:#FFFFFF;
+	font-family: 'Pinyon Script', cursive;
+}
+.header h2{
+	float:right;
+	color: 	
+	font-style:oblique;
+	margin-right:-35px;
+	color:#EEEEEE;
+}
+.header h3{
+	float:right;
+	padding:0;
+	margin:5px -45px 0px 0px;
+	margin-right:-35px;
+	font-family: 'Nunito', sans-serif;
+	font-size:1.3em;
+	font-style:oblique;
+	color:#EEEEEE;
+}
+.header hr{
+	margin: -20px 0px 0px 0px;
+}
+
+footer{
+	background: rgb(188,188,188); 
+		margin-top: -10px;	
+	-webkit-box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.75),inset 0px -5px 5px 0px rgba(0, 0, 0, 0.9),inset 0px 5px 5px 0px rgba(0, 0, 0, 0.9);
+	-moz-box-shadow:    0px 5px 5px 0px rgba(50, 50, 50, 0.75),inset 0px -5px 5px 0px rgba(0, 0, 0, 0.9),inset 0px 5px 5px 0px rgba(0, 0, 0, 0.9);
+	box-shadow:         0px 5px 5px 0px rgba(50, 50, 50, 0.75),inset 0px -5px 5px 0px rgba(0, 0, 0, 0.9),inset 0px 5px 5px 0px rgba(0, 0, 0, 0.9);
+}
+/*fix de las thumb */
+.thumbnail>img{
+	height:175px;
+}
+.thumbnail_l>img{
+	height:300px;
+	width: auto;
+}
+/*******************************************************************
+ * **********************MENU ************************************
+ * *************************************************************/
+ .menu li{
+	list-style:none;
+	float:left;
+	margin:0px 5px 5px 0px;
+	height:40px;
+	min-width:158px;
+	padding:5px;
+	background: rgb(254,204,177);
+	background: -moz-linear-gradient(top, rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,204,177,1)), color-stop(50%,rgba(241,116,50,1)), color-stop(51%,rgba(234,85,7,1)), color-stop(100%,rgba(251,149,94,1)));
+	background: -webkit-linear-gradient(top, rgba(254,204,177,1) 0%,rgba(241,116,50,1) 50%,rgba(234,85,7,1) 51%,rgba(251,149,94,1) 100%);
+	background: -o-linear-gradient(top, rgba(254,204,177,1) 0%,rgba(241,116,50,1) 50%,rgba(234,85,7,1) 51%,rgba(251,149,94,1) 100%);
+	background: -ms-linear-gradient(top, rgba(254,204,177,1) 0%,rgba(241,116,50,1) 50%,rgba(234,85,7,1) 51%,rgba(251,149,94,1) 100%);
+	background: linear-gradient(to bottom, rgba(254,204,177,1) 0%,rgba(241,116,50,1) 50%,rgba(234,85,7,1) 51%,rgba(251,149,94,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#fb955e',GradientType=0 );
+}
+
+.menu li:hover{
+	background: rgb(251,149,94);
+	background: -moz-linear-gradient(top, rgba(251,149,94,1) 0%, rgba(234,85,7,1) 49%, rgba(241,116,50,1) 50%, rgba(254,204,177,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(251,149,94,1)), color-stop(49%,rgba(234,85,7,1)), color-stop(50%,rgba(241,116,50,1)), color-stop(100%,rgba(254,204,177,1)));
+	background: -webkit-linear-gradient(top, rgba(251,149,94,1) 0%,rgba(234,85,7,1) 49%,rgba(241,116,50,1) 50%,rgba(254,204,177,1) 100%);
+	background: -o-linear-gradient(top, rgba(251,149,94,1) 0%,rgba(234,85,7,1) 49%,rgba(241,116,50,1) 50%,rgba(254,204,177,1) 100%);
+	background: -ms-linear-gradient(top, rgba(251,149,94,1) 0%,rgba(234,85,7,1) 49%,rgba(241,116,50,1) 50%,rgba(254,204,177,1) 100%);
+	background: linear-gradient(to bottom, rgba(251,149,94,1) 0%,rgba(234,85,7,1) 49%,rgba(241,116,50,1) 50%,rgba(254,204,177,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb955e', endColorstr='#feccb1',GradientType=0 );
+	
+}
+
+#chk_box_1:checked ~ div {
+   background: red;}
