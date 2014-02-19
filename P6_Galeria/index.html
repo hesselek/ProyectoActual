@@ -19,7 +19,7 @@
     <![endif]-->
   </head>
   <body>
-  	<div class="row"><h1>Aqui va una imagen...</h1></div>
+  	<div><br /><br /><br /></div>
   	<div class="row">
   		<div class="header">
 	  		<div class="container">
@@ -27,7 +27,7 @@
 	  				<h1>La Telaraña</h1>	
 	  			</div>
 	  			<div class="col-lg-6">
-	  				<h2>Art & Desing</h2>
+	  				<h2>Art &amp; Desing</h2>
 	  			</div>
 	  			<hr class="col-lg-12" />
 		  		<div class="col-lg-7 col-lg-offset-5">
@@ -42,22 +42,77 @@
   		</div>
   	</div>
 
-
-		<div class="container maincontainer">	
-			<ul class="menu"> 
-				<a class="bot" href="#"><li><label for="chk_box_1">Inicio</label></li></a>
-				<a ><li>Gimp</li></a>
-					<li>Reproductores</li><li>Flash</li><li>Web Animation</li><li>Gift Animado</li>
+<div class="row central">
+		<div class="container maincontainer">
+			<div class="col-lg-12 text-center">	
+				<ul class="menu"> 
+					<a href="#"><label for="chk_box_1"><li>Inicio</li></label></a>
+					<a href="#"><label for="chk_box_2"><li>Gimp</li></label></a>
+					<a href="#"><label for="chk_box_3"><li>CSS</li></label></a>
+					<a href="#"><label for="chk_box_4"><li>Reproductores</li></label></a>
+					<a href="#"><label for="chk_box_5"><li>Flash</li></label></a>
+					<a href="#"><label for="chk_box_6"><li>Web Animation</li></label></a>
+					<a href="#"><label for="chk_box_7"><li>Gift Animado</li></label></a>
 				</ul>
+			</div>
+			
+		<!-- ....y Aqui comienza la fiesta. hay marcas de estas en cada sección, por que la página es un tanto larga... 
+				Esta sección corresponde al inicio de la página.
+			-->
+			
+			<!--  ******************************************************************************************************
+	 *************************** Aqui comienza la sección Inicio  **************************
+	 * ***************************************************************************************************** -->	
 		
-		<input type="checkbox" id="chk_box_1"/>
-		<div class="my_pannel">
+	
+		<input type="radio" name="groupR" id="chk_box_1" checked="checked"/>
+			<iframe class="my_iframe" src="Ejer2.html"  frameborder="0"> </iframe>
+<!--  ******************************************************************************************************
+	 *************************** Aqui comienza la sección de la galeria de fotos  **************************
+	 * ***************************************************************************************************** 		-->
+	 <input type="radio" name="groupR" id="chk_box_2"/>
+		<iframe class="my_iframe" src="html/galeria.html" frameborder="0"> </iframe>
+		
+	<!--  ******************************************************************************************************
+	 *************************** Aqui comienza la sección del Arkaizt Garro **************************
+	 * ***************************************************************************************************** 		-->
+	 
+	 <input type="radio" name="groupR" id="chk_box_3"/>
+		<iframe class="my_iframe" src="Ejer2.html"  frameborder="0"> </iframe>
+		
+	
+				<!--  ******************************************************************************************************
+	 *************************** Aqui comienza la sección de reproductores **************************
+	 * ***************************************************************************************************** 		-->
+		<input type="radio" name="groupR" id="chk_box_4"/>
+			<iframe class="my_iframe" src="Ejer2.html"  frameborder="0"> </iframe>
+			
+	<!--  ******************************************************************************************************
+	 *************************** Aqui comienza la sección Flash **************************
+	 * ***************************************************************************************************** 		-->
+		<input type="radio" name="groupR" id="chk_box_5"/>
+			<iframe class="my_iframe" src="Ejer2.html"  frameborder="0"> </iframe>
+		<!--  ******************************************************************************************************
+	 *************************** Aqui comienza la sección del web Animation **************************
+	 * ***************************************************************************************************** 		-->
+		<input type="radio" name="groupR" id="chk_box_6"/>
+			<iframe class="my_iframe" src="Ejer2.html"  frameborder="0"> </iframe>
+			
+		<!--  ******************************************************************************************************
+	 *************************** Aqui comienza la sección del gift animado **************************
+	 * ***************************************************************************************************** 		-->
+		<input type="radio" name="groupR" id="chk_box_7"/>
+	 		<iframe class="my_iframe" src="Ejer2.html"  frameborder="0"> </iframe>
+	 
+		
+				
+	<!--	<div class="my_pannel" id="fotos">
 			   		<div class="col-xs-6 col-md-3">
     					<a href="#" class="thumbnail">
       					<img src="img/gimp/Imagen1.jpg" alt="...">
     					</a>
     				<div class="caption">
-    					<h3>Imagen </h3>
+    					<h3>Imagen 1</h3>
     				</div>
     				</div>
     				<div class="col-xs-6 col-md-3">
@@ -135,13 +190,20 @@
     					<h3>Imagen </h3>
     				</div>
     				</div>
-    				
-    				
-	
+
 	</div>
-   	
+	
+	<!--  ******************************************************************************************************
+	 *************************** Aqui comienza la sección de la galeria de fotos  **************************
+	 * ***************************************************************************************************** -->
+	
+		
+	
+		
+	
+   	</div>
 	</div>	
-	<footer class="row">
+	<footer class="row clearfix">
 		hola
 	</footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
