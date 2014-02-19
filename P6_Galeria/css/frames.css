@@ -30,6 +30,11 @@ box-shadow:         0px 0px 15px 0px rgba(92, 99, 96, 0.75);
 h1{
 	font-size: 4em;
 }
+.ejercicios{
+	
+	font-size:3em;
+	text-shadow: 5px 5px 5px #ff8b40;
+}
 
 .thumbnail >img:hover{
 	 border: 3px solid  #ff6400;
@@ -47,4 +52,48 @@ transform:scale(1.05,1.05);
  */
 .text-center{
 	text-align: center;
+}
+
+.menu_ejer li{
+	list-style:none;
+	color:white;
+	margin-left:0px;
+	cursor:pointer;
+	cursor:hand;
+}
+
+ul a{
+	margin-top:3px;
+	padding:5px;
+	font-family: 'Varela Round', sans-serif;
+	font-size:1.5em;
+	font-weight: bold;
+	
+}
+ul > a:nth-child(odd){
+	display:block;
+	height:40px;
+background: -moz-linear-gradient(left, rgba(255,170,115,0.65) 0%, rgba(255,170,115,0.31) 53%, rgba(0,0,0,0) 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,170,115,0.65)), color-stop(53%,rgba(255,170,115,0.31)), color-stop(100%,rgba(0,0,0,0)));
+background: -webkit-linear-gradient(left, rgba(255,170,115,0.65) 0%,rgba(255,170,115,0.31) 53%,rgba(0,0,0,0) 100%);
+background: -o-linear-gradient(left, rgba(255,170,115,0.65) 0%,rgba(255,170,115,0.31) 53%,rgba(0,0,0,0) 100%);
+background: -ms-linear-gradient(left, rgba(255,170,115,0.65) 0%,rgba(255,170,115,0.31) 53%,rgba(0,0,0,0) 100%);
+background: linear-gradient(to right, rgba(255,170,115,0.65) 0%,rgba(255,170,115,0.31) 53%,rgba(0,0,0,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6ffaa73', endColorstr='#00000000',GradientType=1 );
+
+
+}
+
+ul > a:nth-child(even){
+	text-align:right;
+	display:block;
+	height:40px;
+background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.01) 1%, rgba(191,104,48,0.29) 45%, rgba(191,104,48,0.65) 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(1%,rgba(0,0,0,0.01)), color-stop(45%,rgba(191,104,48,0.29)), color-stop(100%,rgba(191,104,48,0.65)));
+background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 1%,rgba(191,104,48,0.29) 45%,rgba(191,104,48,0.65) 100%);
+background: -o-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 1%,rgba(191,104,48,0.29) 45%,rgba(191,104,48,0.65) 100%);
+background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 1%,rgba(191,104,48,0.29) 45%,rgba(191,104,48,0.65) 100%);
+background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 1%,rgba(191,104,48,0.29) 45%,rgba(191,104,48,0.65) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6bf6830',GradientType=1 );
+
 }
