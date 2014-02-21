@@ -103,15 +103,6 @@ function initializeData(){
 	 */
 	
 
-/*	while(producto !=null){
-		document.write(producto.data.descripcion+'<br />');
-		producto = producto.next;
-	}
-		var servicio = lsServicios.start;
-	while(servicio !=null){
-		document.write(servicio.data.descripcion+'<br />');
-		servicio = servicio.next;
-	}*/
 }
 function initializeEvents(){
 	 		
@@ -127,7 +118,12 @@ function initializeEvents(){
          	document.getElementById('salir').addEventListener("click",Salir,false);
          	document.getElementById('listadoSimple').addEventListener("click",ListadoSimple,false);
        		document.getElementById('listadoAgrupado').addEventListener("click",ListadoAgrupado,false);
-       		document.getElementById('unidades').addEventListener("change",ActualizarTotal,false);
+       		document.getElementById('unidades').addEventListener("change",ActualizarTotalLinea,false);
+       		
+       		/*  Acabo de descubrir la importancia de la diferencia entre keypress y keyup. 
+       		 * Basta sustituir en este evento uno por otro para darse cuenta. 
+       		 */
+       		document.getElementById('unidades').addEventListener("keyup",ActualizarTotalLinea,false);
          /*
           * Esta parte me permite generar todos los eventos de los botones de una vez, sin tener que repetirlos.
           * Es mas, si añadimos un nuevo botón, solo tenemos que crear la función asociada al evento, ya que este
@@ -150,14 +146,14 @@ function RadioCambio (event) {
           var radio = event.target;
           var unidades = document.getElementById('unidades');
            if (radio.value === 'serv') {
-                CargarLista(lsServicios);
+                CargarLista(lsServicios,"Selecciona un servicio");
                 unidades.disabled = true;
                 unidades.value ='';
                 
 
             }
             else {
-                CargarLista(lsProductos);
+                CargarLista(lsProductos,"Selecciona un producto");
                  unidades.disabled = false;
 
             }
@@ -171,7 +167,10 @@ function CambioSelect (event){
 	
 }
 
-function ActualizarTotal () {
-	  document.getElementById('totalLinea').value = document.getElementById('unidades').value *
+function ActualizarTotalLinea () {
+	var total = document.getElementById('totalLinea');
+	
+	if(total !=0 || total != "") 
+	  total.value = document.getElementById('unidades').value *
 	  												document.getElementById('precio').value;
 }

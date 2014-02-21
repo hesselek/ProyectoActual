@@ -15,7 +15,7 @@ function start () {
  
 }
 
-function CargarLista(lista){
+function CargarLista(lista,mensaje){
 	var select = document.getElementById('selectProd');
 	var itemSelect = lista.start;
 	var option;
@@ -23,7 +23,15 @@ function CargarLista(lista){
     {
         select.removeChild(select.firstChild);       
     }
+	option = document.createElement('option');
 	
+	/*
+	 * Introducimos un elemento 0 para evitar inconsistencias
+	 */
+	option.value = 0;
+	
+	option.text = mensaje;
+	select.appendChild(option);
 	while(itemSelect !=null){
 		
 		
@@ -210,7 +218,7 @@ function insLinea () {
 	else
 		var linea = new LineaProducto(product,pre,uni);
 		current_factura.lineaFactura.add(linea);
-		insertarLinetaTabla(product,pre,uni,tot);
+		insertarLinetaTabla(current_factura.lineaFactura.end);
 		  
 }
 
@@ -245,6 +253,7 @@ function ActualizarTotal(){
 	document.getElementById('iva').value =  current_factura.data.Iva();
 	document.getElementById('totalIva').value = current_factura.data.TotalIva();
 }
+
 
 function errorFacturaNueva(){
 		alert('No puedes crear una nueva factura mientras estás editando una. ');
