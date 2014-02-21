@@ -7,6 +7,9 @@
 
 
 function initializeData(){
+	
+		flStado = 0;
+		miLibro = new Libro();
 	//lo ideal sería que los datos que aqu� se muestran se pasasen desde la base de datos
 	/**
 	 * Productos 
@@ -26,18 +29,14 @@ function initializeData(){
 	var ser4 = new Servicio(27.80,'Montaje PC');
 	var ser5 = new Servicio(16.70,'Ampliación');
 	
-	/*
-	 * Clientes
-	 */
-	var cli1 = new Cliente("C/Olmo Nº 15","77755522Z","Margarita del Monte Romero");
-	var cli2 = new Cliente("C/Peral Nº 7, 4º-D","55566678D","Manuel Gracia Suelta");
-	var cli3 = new Cliente("C/Encina Nº 8, 1º-A", "00099933R","Encarnación de Dios Avemaría");
-	var cli4 = new Cliente("C/Roble Nº 5, 2º-B","33344412S","Román del Pino Seco");
 	
 	/*
 	 *  Lineas
 	 * 
 	 */
+	/*
+ * lineas de producto de prueba
+ */
 	var li1 = new LineaProducto(pro1.descripcion,pro1.precio,10);
 	var li2 = new LineaServicio(ser1.descripcion,ser1.precio);
 	var li3 = new LineaProducto(pro2.descripcion,pro2.precio,10);
@@ -48,6 +47,40 @@ function initializeData(){
 	var li8 = new LineaServicio(ser4.descripcion,ser4.precio);
 	var li9 = new LineaProducto(pro5.descripcion,pro5.precio,10);
 	var li10 = new LineaServicio(ser5.descripcion,ser5.precio);
+/*
+	 * Clientes de prueba
+	 */
+	var cli1 = new Cliente("C/Olmo Nº 15","77755522Z","Margarita del Monte Romero");
+	var cli2 = new Cliente("C/Peral Nº 7, 4º-D","55566678D","Manuel Gracia Suelta");
+	var cli3 = new Cliente("C/Encina Nº 8, 1º-A", "00099933R","Encarnación de Dios Avemaría");
+	var cli4 = new Cliente("C/Roble Nº 5, 2º-B","33344412S","Román del Pino Seco");
+	
+	/*
+	 * facturas de prueba
+	 */
+	var fac1 = new Factura(cli1, miLibro.codigoFactura());
+				fac1.lineaFactura.add(li1);
+				fac1.lineaFactura.add(li5);
+				fac1.lineaFactura.add(li7);
+				fac1.lineaFactura.add(li3);
+				fac1.lineaFactura.add(li2);
+	var fac2 = new Factura(cli4, miLibro.codigoFactura());
+				fac2.lineaFactura.add(li3);
+				fac2.lineaFactura.add(li5);
+				fac2.lineaFactura.add(li8);
+				fac2.lineaFactura.add(li9);
+				fac2.lineaFactura.add(li10);
+	var fac3 = new Factura(cli2,miLibro.codigoFactura());
+				fac3.lineaFactura.add(li1);
+				fac3.lineaFactura.add(li7);
+				fac3.lineaFactura.add(li6);
+				fac3.lineaFactura.add(li6);
+				fac3.lineaFactura.add(li5);
+				fac3.lineaFactura.add(li4);
+				fac3.lineaFactura.add(li3);
+	miLibro.listaFacturas.add(fac2);
+	miLibro.listaFacturas.add(fac1);
+	miLibro.listaFacturas.add(fac3);
 	/*
 	 * añadimos los servicios, los clientes y las facturas a las listas creadas:
 	 */
@@ -68,9 +101,8 @@ function initializeData(){
 	/*
 	 * comprobamos que funciona
 	 */
-	var producto = lsProductos.start;
-	miLibro = new Libro();//new Libro();
-	flStado = 0;
+	
+
 /*	while(producto !=null){
 		document.write(producto.data.descripcion+'<br />');
 		producto = producto.next;

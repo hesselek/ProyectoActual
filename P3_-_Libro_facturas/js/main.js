@@ -1,10 +1,10 @@
 
 
-var miLibro = null;//new Libro();
+var miLibro = null;// = new Libro();
 var flStado = null;
 var current_factura = null;
 var current_cliente = null;
-var listado_facturas = null;
+
 
 
 
@@ -12,6 +12,7 @@ function start () {
   initializeData();
   initializeEvents();
   status();
+ 
 }
 
 function CargarLista(lista){
@@ -142,42 +143,42 @@ function canFactura(e){
 
 function first(){
 	
-	listado_facturas = miLibro.listaFacturas.start;
+	current_factura = miLibro.listaFacturas.start;
 	rellenarCampos();
 }
 
 function rellenarCampos(){
-	document.getElementById('codigo').value = listado_facturas.data.codigo;
-	document.getElementById('fecha').value = listado_facturas.data.fecha;
-	document.getElementById('direccion').value = listado_facturas.data.cliente.direccion;
-	document.getElementById('nif').value = listado_facturas.data.cliente.nif;
-	document.getElementById('nombre').value = listado_facturas.data.cliente.nombre;
-	var lineas_facturas = listado_facturas.data.lineaFactura;
+	document.getElementById('codigo').value = current_factura.data.codigo;
+	document.getElementById('fecha').value = current_factura.data.fecha;
+	document.getElementById('direccion').value = current_factura.data.cliente.direccion;
+	document.getElementById('nif').value = current_factura.data.cliente.nif;
+	document.getElementById('nombre').value = current_factura.data.cliente.nombre;
+	var lineas_facturas = current_factura.data.lineaFactura;
 	var lin = lineas_facturas.start;
   	while(lin !=null){
 		insertarLinetaTabla(lin.data.descripcion,lin.data.precio,lin.data.unidades,lin.data.total,document.getElementById('tabla'));
 		lin = lin.next;
 	}
 	
-	document.getElementById('total').value =  listado_facturas.data.Total();
-	document.getElementById('iva').value =  listado_facturas.data.Iva();
-	document.getElementById('totalIva').value = listado_facturas.data.TotalIva();
+	document.getElementById('total').value =  current_factura.data.Total();
+	document.getElementById('iva').value =  current_factura.data.Iva();
+	document.getElementById('totalIva').value = current_factura.data.TotalIva();
 
 	
 }
 
 function previous(){
-	listado_facturas = listado_facturas.prev;
+	current_factura = miLibro.listaFacturas.prev;
 	rellenarCampos();
 }
 
 function next(){
-	listado_facturas = listado_facturas.next;
+	current_factura = miLibro.listaFacturas.next;
 	rellenarCampos();
 }
 
 function last(){
-	listado_facturas = miLibro.listaFacturas.end;
+	current_factura = miLibro.listaFacturas.end;
 	rellenarCampos();
 }
 
@@ -199,7 +200,7 @@ function insLinea () {
 }
 
 function insertarLinetaTabla(product,pre,uni,tot,tabla) {
-  var miTabla = tabla
+  var miTabla = tabla;
 	if(miTabla.rows.length == 0)
 		CrearTabla(miTabla);
 	
@@ -227,9 +228,9 @@ function NuevaFactura(){
 }
 
 function ActualizarTotal(){
-	document.getElementById('total').value =  current_factura.Total();
-	document.getElementById('iva').value =  current_factura.Iva();
-	document.getElementById('totalIva').value = current_factura.TotalIva();
+	document.getElementById('total').value =  current_factura.data.Total();
+	document.getElementById('iva').value =  current_factura.data.Iva();
+	document.getElementById('totalIva').value = current_factura.data.TotalIva();
 }
 
 function errorFacturaNueva(){
@@ -270,5 +271,6 @@ function CrearTabla(oTabla){
 
 
 
-
 window.onload = start;
+
+

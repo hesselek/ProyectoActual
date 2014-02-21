@@ -25,6 +25,8 @@ body{
 	 10px 0px 10px -10px rgba(0,0,0,1),
 	-10px 0px 10px -10px rgba(0,0,0,1);
 	min-height: 400px;
+ 	height:100%;
+	
 	
 	
 }
@@ -156,15 +158,23 @@ input[type="radio"]:checked + .my_pannel{
 	position:relative;
 	width: 100%;
 	top: 30px;
+	opacity:0;
 	float: left;
+	transition: height 1s ease 0s,opacity 0.5s ease;
 
 }
 input[type="radio"]:checked + .my_iframe{
 	
-	height:1000px;
-	transition: height 1s ease 0s;
+	height:400px;
+	opacity:1;
+	
 }
 
+input[type="radio"]:checked + .my_iframe#primer{
+	opacity:1;
+	height:1000px;
+
+}
 
 
 
