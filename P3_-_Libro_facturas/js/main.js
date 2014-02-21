@@ -1,10 +1,8 @@
-
-
 var miLibro = null;// = new Libro();
 var flStado = null;
 var current_factura = null;
 var current_cliente = null;
-
+var tabla = null;
 
 
 
@@ -12,6 +10,8 @@ function start () {
   initializeData();
   initializeEvents();
   status();
+  tabla = document.getElementById("tabla");
+  CrearTabla(tabla);
  
 }
 
@@ -49,7 +49,9 @@ function status(){
 			Bloquear('linea',true);
 			Bloquear('validarFactura');
 			Bloquear('listar');
+			Bloquear('cabecera',true);
 			Desbloquear('cabecera');
+			borrarTabla();
 			break;
 		case 2:
 			Bloquear('cabecera',false);
@@ -96,12 +98,14 @@ function Bloquear(formulario,limpiar){
 		}
 		
 	}
-	var Parent = document.getElementById('tabla');
-	while(Parent.hasChildNodes())
-	{
-   		Parent.removeChild(Parent.firstChild);
-	}
+}
 
+
+function borrarTabla(){
+	for(var i = tabla.rows.length - 1; i > 0; i--)
+	{
+    tabla.deleteRow(i);
+	}
 }
 
 /**
@@ -142,7 +146,7 @@ function canFactura(e){
 }
 
 function first(){
-	
+	borrarTabla();
 	current_factura = miLibro.listaFacturas.start;
 	rellenarCampos();
 }
@@ -156,7 +160,7 @@ function rellenarCampos(){
 	var lineas_facturas = current_factura.data.lineaFactura;
 	var lin = lineas_facturas.start;
   	while(lin !=null){
-		insertarLinetaTabla(lin.data.descripcion,lin.data.precio,lin.data.unidades,lin.data.total,document.getElementById('tabla'));
+		insertarLinetaTabla(lin.data.descripcion,lin.data.precio,lin.data.unidades,lin.data.total);
 		lin = lin.next;
 	}
 	
@@ -168,7 +172,9 @@ function rellenarCampos(){
 }
 
 function previous(){
+	
 	if(current_factura.prev!=null){
+		borrarTabla();
 		current_factura = current_factura.prev;
 		rellenarCampos();
 	}
@@ -176,7 +182,9 @@ function previous(){
 }
 
 function next(){
+	
 	if(current_factura.next !=null){
+		borrarTabla();
 		current_factura = current_factura.next;
 		rellenarCampos();
 	}
@@ -184,7 +192,8 @@ function next(){
 }
 
 function last(){
-	current_factura = current_factura.end;
+	borrarTabla();
+	current_factura = miLibro.listaFacturas.end;
 	rellenarCampos();
 }
 
@@ -201,16 +210,14 @@ function insLinea () {
 	else
 		var linea = new LineaProducto(product,pre,uni);
 		current_factura.lineaFactura.add(linea);
-		insertarLinetaTabla(product,pre,uni,tot,document.getElementById('tabla'));
+		insertarLinetaTabla(product,pre,uni,tot);
 		  
 }
 
-function insertarLinetaTabla(product,pre,uni,tot,tabla) {
-  var miTabla = tabla;
-	if(miTabla.rows.length == 0)
-		CrearTabla(miTabla);
+function insertarLinetaTabla(product,pre,uni,tot) {
+
 	
-	var fila = miTabla.insertRow(-1);
+	var fila = tabla.tBodies[0].insertRow(-1);
 	fila.insertCell(0).textContent = product; 
 	fila.insertCell(1).textContent = pre;
 	fila.insertCell(2).textContent = uni;
@@ -264,7 +271,7 @@ function ListadoAgrupado(){
 //como el paso de crear varias tablas lo vamos a utilizar muchas veces, lo he externalizado...
 function CrearTabla(oTabla){
 	var oTHead = document.createElement("thead");
-	var oFila = oTHead.insertRow(0);
+	var oFila= oTHead.insertRow(0);
 	oFila.insertCell(0).textContent = "Descripcion";
 	oFila.insertCell(1).textContent = "Precio";
 	oFila.insertCell(2).textContent = "Unidades";

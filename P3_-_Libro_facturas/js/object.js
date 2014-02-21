@@ -103,10 +103,9 @@ function List() {
   	this.end.next = List.nodo();
   	this.prev = List.nodo(); 
   	this.prev = this.end;
-  //	this.prev.data = this.end.data;
-   
+    
    this.end = this.end.next; 
-  } ; 
+  }; 
   this.end.data = data; 
   this.end.prev = this.prev;
  };
