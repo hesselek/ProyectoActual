@@ -74,7 +74,7 @@ function autocompleta() {
         }
       };
       
-      peticion.open('POST', 'http://localhost/autocompletaMunicipios.php?nocache='+Math.random(), true);
+      peticion.open('POST', 'autcompMun.php?nocache='+Math.random(), true);
       peticion.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       peticion.send('municipio='+encodeURIComponent(texto));
     }
