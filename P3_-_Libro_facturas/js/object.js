@@ -26,6 +26,7 @@ function Linea(sDescripcion){
 
 function LineaProducto(sDescripcion,dbPrecio,iUnidades) {
 	Linea.call(this,sDescripcion);
+	this.dbPrecio = dbPrecio;
 	this.cantidad = iUnidades;
 	this.total = iUnidades*dbPrecio;
 }
@@ -34,6 +35,7 @@ LineaProducto.prototype = new Linea;
 
 function LineaServicio(sDescripcion,dbPrecio) {
 	Linea.call(this,sDescripcion);
+	this.dbPrecio = dbPrecio;
 	this.total = dbPrecio;
 }
 

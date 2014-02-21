@@ -160,7 +160,7 @@ function rellenarCampos(){
 	var lineas_facturas = current_factura.data.lineaFactura;
 	var lin = lineas_facturas.start;
   	while(lin !=null){
-		insertarLinetaTabla(lin.data.descripcion,lin.data.precio,lin.data.unidades,lin.data.total);
+		insertarLinetaTabla(lin);
 		lin = lin.next;
 	}
 	
@@ -214,14 +214,14 @@ function insLinea () {
 		  
 }
 
-function insertarLinetaTabla(product,pre,uni,tot) {
-
-	
+function insertarLinetaTabla(linea) {
+	//var lin = lineaTabla;
+	//alert(lin.data.descripcion);
 	var fila = tabla.tBodies[0].insertRow(-1);
-	fila.insertCell(0).textContent = product; 
-	fila.insertCell(1).textContent = pre;
-	fila.insertCell(2).textContent = uni;
-	fila.insertCell(3).textContent = tot;
+	fila.insertCell(0).textContent = linea.data.descripcion; 
+	fila.insertCell(1).textContent = linea.data.dbPrecio;
+	fila.insertCell(2).textContent = (linea.data.cantidad != undefined)? linea.data.cantidad : "-" ;
+	fila.insertCell(3).textContent = linea.data.total;
 	
 	
 	ActualizarTotal();
