@@ -168,17 +168,23 @@ function rellenarCampos(){
 }
 
 function previous(){
-	current_factura = miLibro.listaFacturas.prev;
-	rellenarCampos();
+	if(current_factura.prev!=null){
+		current_factura = current_factura.prev;
+		rellenarCampos();
+	}
+	//TODO:agregar código disable aqui
 }
 
 function next(){
-	current_factura = miLibro.listaFacturas.next;
-	rellenarCampos();
+	if(current_factura.next !=null){
+		current_factura = current_factura.next;
+		rellenarCampos();
+	}
+	//TODO:agregar código disable aqui
 }
 
 function last(){
-	current_factura = miLibro.listaFacturas.end;
+	current_factura = current_factura.end;
 	rellenarCampos();
 }
 
