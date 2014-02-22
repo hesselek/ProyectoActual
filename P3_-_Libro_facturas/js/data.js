@@ -78,9 +78,29 @@ function initializeData(){
 				fac3.lineaFactura.add(li5);
 				fac3.lineaFactura.add(li4);
 				fac3.lineaFactura.add(li3);
+	var fac4 = new Factura(cli2,miLibro.codigoFactura());
+				fac4.lineaFactura.add(li6);
+				fac4.lineaFactura.add(li2);
+				fac4.lineaFactura.add(li5);
+				fac4.lineaFactura.add(li4);
+	var fac5 = new Factura(cli4,miLibro.codigoFactura());
+				fac5.lineaFactura.add(li6);
+				fac5.lineaFactura.add(li7);
+				fac5.lineaFactura.add(li6);
+				fac5.lineaFactura.add(li5);
+				fac5.lineaFactura.add(li4);
+	var fac6 = new Factura(cli4,miLibro.codigoFactura());
+				fac6.lineaFactura.add(li4);
+				fac6.lineaFactura.add(li1);
+				fac6.lineaFactura.add(li2);
+				fac6.lineaFactura.add(li4);
+				
+	miLibro.listaFacturas.add(fac6);
 	miLibro.listaFacturas.add(fac2);
-	miLibro.listaFacturas.add(fac1);
 	miLibro.listaFacturas.add(fac3);
+	miLibro.listaFacturas.add(fac4);
+	miLibro.listaFacturas.add(fac1);
+	miLibro.listaFacturas.add(fac5);
 	/*
 	 * añadimos los servicios, los clientes y las facturas a las listas creadas:
 	 */

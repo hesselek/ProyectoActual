@@ -2,7 +2,7 @@
  * @author hesselek
  */
 
-
+var total_del_todo = 0;
 function Cliente(sDireccion, sNif, sNombre){
 	this.direccion = sDireccion;
 	this.nif = sNif;
@@ -79,7 +79,94 @@ function Libro(){
   	this.posicion = this.posicion +1;
   	return this.posicion;
   };
+  
+  Libro.prototype.generarListadoSimple = function () {
+  	/*
+  	 * Esta función genera un tbody que puede ser enganchado en cualquier tabla...
+  	 */
+  	var body  = document.createElement("tbody");
+  	
+  	var factura = this.listaFacturas.start;
+	total_del_todo = 0;
+	while(factura != null){
+	
+		var fila = body.insertRow(-1);
+		fila.insertCell(0).textContent = factura.data.codigo; 
+		fila.insertCell(1).textContent = factura.data.cliente.nombre;
+		fila.insertCell(2).textContent = factura.data.cliente.nif;
+		fila.insertCell(3).textContent = factura.data.Total();
+	
+		total_del_todo = total_del_todo + factura.data.Total();
+			factura = factura.next;
+	}
+	
+	return body;
+    
+  };
+  
+ /* Para esta funcion, creo una tabla entera, y me dejo de complicaciones */ 
+  
+  Libro.prototype.generarListadoAgrupado = function () {
+  	var body  = document.createElement("tbody");
 
+
+	/*
+	 * El hecho de que javascript pase todo por referencia me ha obligado a crear esta mierda de apaño;
+	 * deberia añadirlo al prototipo de la lista pero paso. Realmente, paso.
+	 */
+  	var lista = new List();
+  	var temp =	miLibro.listaFacturas.start;
+  	
+  	while(temp != null){
+  		lista.add(temp.data);
+  		temp = temp.next;
+  	}
+  	
+  
+  	
+	
+  	var factura = lista.start;
+  	var cliente = null;
+	
+  	while(factura != null){
+  		total_del_todo=0;
+  		cliente = factura.data.cliente;
+  		var fila = body.insertRow(-1);
+  		fila.insertCell(0).textContent = "Nombre:";
+		fila.insertCell(1).textContent = cliente.nombre;
+		fila.insertCell(2).textContent = "Nif:";
+		fila.insertCell(3).textContent = cliente.nif;
+		
+		fila = body.insertRow(-1);
+		
+		fila.insertCell(0).texContent = "";
+  		fila.insertCell(1).textContent = "Codigo de Factura:";
+		fila.insertCell(2).textContent = "Fecha:";
+		fila.insertCell(3).textContent = "Importe:";
+		
+  		while(factura != null){
+  			if(cliente === factura.data.cliente){
+  				fila = body.insertRow(-1);	
+  				fila.insertCell(0).texContent = "";
+  				fila.insertCell(1).textContent = factura.data.codigo;
+				fila.insertCell(2).textContent = factura.data.fecha;
+				fila.insertCell(3).textContent = factura.data.Total();
+  				total_del_todo += factura.data.Total();
+  				lista.borrar(factura.data);
+  			}
+  			
+  		
+  			factura = factura.next;
+  		}
+  		fila = body.insertRow(-1);	
+  				fila.insertCell(0).texContent = "";
+  				fila.insertCell(1).textContent = "";
+				fila.insertCell(2).textContent = "Total:";
+				fila.insertCell(3).textContent = total_del_todo;
+  		factura = lista.start;
+  	}
+  	return body;
+  };
 /*
  *   He creado lo que sería la implementación de una Linked List en javascript, lo que me va a permitir
  *   una manera más sencilla de acceder a los objetos que, de otra manera, se almacenarían en un array.

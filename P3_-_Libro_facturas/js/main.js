@@ -276,30 +276,15 @@ function Salir (){
 	
 }
 //TODO: alinear el texto en la linea de factura
-function ListadoSimple () {
 
-	var div = document.createElement( "div" );
-        // add some text to know if it's really there
-        div.innerText = 'text of the div';
-        document.body.appendChild( div );
-        // Here come div's atts;
-        var listadoSimple = window.open('index.html','loqueyoquiera','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
-		clone = div.cloneNode(true);
-       
-        // create the body of the new document
-        listadoSimple.write('<html><body></body></html>');
-        // now you can append the div
-        listadoSimple.body.appendChild( div );
-        alert(listadoSimple.body.innerHTML);
-	
-	listadoSimple.body.appenchild(clonado);
-}
 
-function ListadoAgrupado(){
-	alert('hola, soy el listado agrupado');
-}
 
-//como el paso de crear varias tablas lo vamos a utilizar muchas veces, lo he externalizado...
+
+/* 
+ * como el paso de crear varias tablas lo vamos a utilizar muchas veces, lo he externalizado,
+ * y dividido en dos secciones
+
+ */
 function CrearTabla(oTabla){
 	var oTHead = document.createElement("thead");
 	var oFila= oTHead.insertRow(0);
@@ -314,6 +299,81 @@ function CrearTabla(oTabla){
 }
 
 
+/**
+ *      Funciones asociadas a los listados
+ */
+
+
+
+function ListadoSimple () {
+	var popup = crearVentana("Listado Simple");
+	
+	/*
+	 * Esta es la única manera de que funcione. Eseperamos a que la página cargue para añadir el contenido,
+	 *   y ejecutamos una función anónima. En realidad tiene mucho sentido, pero es difícil ver el sutil matiz
+	 */
+	
+	popup.onload = function(){ 
+					 cabeceraListado(popup,"Listado Simple");
+					
+	
+    var tabla = popup.document.getElementById("tabla");
+        var oTHead = document.createElement("thead");
+	var oFila= oTHead.insertRow(0);
+	oFila.insertCell(0).textContent = "Código";
+	oFila.insertCell(1).textContent = "Cliente";
+	oFila.insertCell(2).textContent = "NIF";
+	oFila.insertCell(3).textContent = "Total";
+	tabla.appendChild(oTHead);
+	
+	var oTfoot = tabla.createTFoot();
+	//tabla.appendChild(oTfoot);
+	var oTBody = miLibro.generarListadoSimple();
+		oFila = oTfoot.insertRow(0);
+	oFila.insertCell(0).textContent = "";
+	oFila.insertCell(1).textContent = "";
+	oFila.insertCell(2).textContent = "Total:";
+	oFila.insertCell(3).textContent = total_del_todo;
+	 
+	
+	tabla.appendChild(oTBody);
+	
+	
+	
+
+	
+	};
+}
+
+function crearVentana (nombre) {
+		var popup = window.open('popup.html',nombre,'width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
+		return popup;
+	
+}
+function ListadoAgrupado(){
+	var popup = crearVentana("Listado Agrupado");
+	popup.onload = function(){ 
+					 cabeceraListado(popup,"Listado Agrupado");
+					 var tabla = popup.document.getElementById("tabla");
+					 	var tbody =	miLibro.generarListadoAgrupado();
+					 	tabla.appendChild(tbody);
+					};
+		
+	
+}
+
+function cabeceraListado (popup,texto) {
+	var h3 = document.createElement( "H3" );
+        h3.textContent= texto;
+    //    document.body.appendChild(h3);
+        
+        // Here come div's atts;
+   //
+	//	clone = h3.cloneNode(true);
+		 var header = popup.document.getElementById("contenido");
+       header.appendChild(h3);
+  
+}
 
 window.onload = start;
 
