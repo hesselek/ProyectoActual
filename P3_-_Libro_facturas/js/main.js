@@ -283,7 +283,7 @@ function ListadoSimple () {
         div.innerText = 'text of the div';
         document.body.appendChild( div );
         // Here come div's atts;
-        var listadoSimple = window.open('','1393028268906','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
+        var listadoSimple = window.open('index.html','loqueyoquiera','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
 		clone = div.cloneNode(true);
        
         // create the body of the new document
