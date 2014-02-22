@@ -140,7 +140,19 @@ function initializeEvents(){
             }
             
 }
+/*
+ * Funciones auxiliares. Puestas aquí por que son muy específicas
+ */
 
+/*
+ * Esta función añade un poco más de seguridad al flujo de trabajo, impidiendo que
+ * se intente crear una nueva factura mientras se está editando una. 
+ */
+
+function unlock(){
+	document.getElementById('nuevaFactura').removeEventListener("click",errorFacturaNueva,false);
+	document.getElementById('nuevaFactura').addEventListener("click",NuevaFactura,false);
+}
 
 function RadioCambio (event) {
           var radio = event.target;
@@ -149,8 +161,6 @@ function RadioCambio (event) {
                 CargarLista(lsServicios,"Selecciona un servicio");
                 unidades.disabled = true;
                 unidades.value ='';
-                
-
             }
             else {
                 CargarLista(lsProductos,"Selecciona un producto");
@@ -160,17 +170,22 @@ function RadioCambio (event) {
 }
 
 function CambioSelect (event){
+	 var unidades = document.getElementById('unidades');
 	var valor = event.target;
-	document.getElementById('unidades').value = 1;
 	document.getElementById('precio').value = valor.value;
-	ActualizarTotal();
+	unidades.value = "";
+	ActualizarTotalLinea();
 	
 }
 
 function ActualizarTotalLinea () {
 	var total = document.getElementById('totalLinea');
-	
-	if(total !=0 || total != "") 
-	  total.value = document.getElementById('unidades').value *
-	  												document.getElementById('precio').value;
+	var uni = document.getElementById('unidades').value;
+	if(uni !=0 || uni != "") {
+	  total.value = uni * document.getElementById('precio').value;
+	  total.value = Math.round(total.value*100)/100;
+	}else{
+		total.value = document.getElementById('precio').value;
+		
+	}
 }

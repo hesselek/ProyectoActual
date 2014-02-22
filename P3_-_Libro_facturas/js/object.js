@@ -173,7 +173,4 @@ function List() {
   } 
  };
 } 
-var miProducto = new Producto(12.3,"Esta es mi descripcion");
-alert(miProducto.descripcion);
-var miLineaProducto = new LineaProducto(miProducto,3);*/
-
+*/

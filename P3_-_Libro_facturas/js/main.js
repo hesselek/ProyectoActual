@@ -3,7 +3,7 @@ var flStado = null;
 var current_factura = null;
 var current_cliente = null;
 var tabla = null;
-
+var navegacion = null;
 
 
 function start () {
@@ -108,7 +108,10 @@ function Bloquear(formulario,limpiar){
 	}
 }
 
-
+/*
+ * Método para no tener que estar creando la tabla continuamente. 
+ * Borramos todas las filas menos la cabecera. 
+ */
 function borrarTabla(){
 	for(var i = tabla.rows.length - 1; i > 0; i--)
 	{
@@ -139,8 +142,7 @@ function envFactura(){
 	miLibro.listaFacturas.add(current_factura);
 	alert('Factura agregada');
 	flStado = 0;
-	document.getElementById('nuevaFactura').removeEventListener("click",errorFacturaNueva,false);
-	document.getElementById('nuevaFactura').addEventListener("click",NuevaFactura,false);
+	unlock();
 	status();
 	
 }
@@ -148,60 +150,64 @@ function envFactura(){
 function canFactura(e){
 	current_factura =  null;
 	flStado = 0;
-	document.getElementById('nuevaFactura').removeEventListener("click",errorFacturaNueva,false);
-	document.getElementById('nuevaFactura').addEventListener("click",NuevaFactura,false);
+	unlock();
 	status();
 }
 
 function first(){
 	borrarTabla();
-	current_factura = miLibro.listaFacturas.start;
+	navegacion = miLibro.listaFacturas.start;
+	current_factura = navegacion.data;
 	rellenarCampos();
 }
 
 function rellenarCampos(){
-	document.getElementById('codigo').value = current_factura.data.codigo;
-	document.getElementById('fecha').value = current_factura.data.fecha;
-	document.getElementById('direccion').value = current_factura.data.cliente.direccion;
-	document.getElementById('nif').value = current_factura.data.cliente.nif;
-	document.getElementById('nombre').value = current_factura.data.cliente.nombre;
-	var lineas_facturas = current_factura.data.lineaFactura;
+	//TODO: validacion del formulario de lineas
+	document.getElementById('codigo').value = current_factura.codigo;
+	document.getElementById('fecha').value = current_factura.fecha;
+	document.getElementById('direccion').value = current_factura.cliente.direccion;
+	document.getElementById('nif').value = current_factura.cliente.nif;
+	document.getElementById('nombre').value = current_factura.cliente.nombre;
+	var lineas_facturas = current_factura.lineaFactura;
 	var lin = lineas_facturas.start;
   	while(lin !=null){
 		insertarLinetaTabla(lin);
 		lin = lin.next;
 	}
-	
-	document.getElementById('total').value =  current_factura.data.Total();
-	document.getElementById('iva').value =  current_factura.data.Iva();
-	document.getElementById('totalIva').value = current_factura.data.TotalIva();
-
+	/*  Codogio mas que redundante 
+	document.getElementById('total').value =  current_factura.Total();
+	document.getElementById('iva').value =  current_factura.Iva();
+	document.getElementById('totalIva').value = current_factura.TotalIva();
+*/
 	
 }
 
 function previous(){
 	
-	if(current_factura.prev!=null){
+	if(navegacion.prev!=null){
 		borrarTabla();
-		current_factura = current_factura.prev;
+		navegacion = navegacion.prev;
+		current_factura = navegacion.data;
 		rellenarCampos();
 	}
-	//TODO:agregar código disable aqui
+	//TODO: agregar código disable aqui
 }
 
 function next(){
 	
-	if(current_factura.next !=null){
+	if(navegacion.next !=null){
 		borrarTabla();
-		current_factura = current_factura.next;
+		navegacion = navegacion.next;
+		current_factura = navegacion.data;
 		rellenarCampos();
 	}
-	//TODO:agregar código disable aqui
+	//TODO: agregar código disable aqui
 }
 
 function last(){
 	borrarTabla();
-	current_factura = miLibro.listaFacturas.end;
+	navegacion = miLibro.listaFacturas.end;
+	current_factura = navegacion.data;
 	rellenarCampos();
 }
 
@@ -249,9 +255,9 @@ function NuevaFactura(){
 }
 
 function ActualizarTotal(){
-	document.getElementById('total').value =  current_factura.data.Total();
-	document.getElementById('iva').value =  current_factura.data.Iva();
-	document.getElementById('totalIva').value = current_factura.data.TotalIva();
+	document.getElementById('total').value =  current_factura.Total();
+	document.getElementById('iva').value =  current_factura.Iva();
+	document.getElementById('totalIva').value = current_factura.TotalIva();
 }
 
 
@@ -262,15 +268,31 @@ function errorFacturaNueva(){
 function Navegar () {
   flStado = 3;
   status();
+  unlock();
   first();
 }
 
 function Salir (){
 	
 }
-
+//TODO: alinear el texto en la linea de factura
 function ListadoSimple () {
-	var listadoSimple = window.open('listado.htm');
+
+	var div = document.createElement( "div" );
+        // add some text to know if it's really there
+        div.innerText = 'text of the div';
+        document.body.appendChild( div );
+        // Here come div's atts;
+        var listadoSimple = window.open('','1393028268906','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');
+		clone = div.cloneNode(true);
+       
+        // create the body of the new document
+        listadoSimple.write('<html><body></body></html>');
+        // now you can append the div
+        listadoSimple.body.appendChild( div );
+        alert(listadoSimple.body.innerHTML);
+	
+	listadoSimple.body.appenchild(clonado);
 }
 
 function ListadoAgrupado(){
