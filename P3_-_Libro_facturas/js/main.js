@@ -244,26 +244,35 @@ function last(){
 }
 
 function insLinea () {
+	var check1 = document.getElementById('r_servicios').checked;
+	var check2 = document.getElementById('r_productos').checked;
+	if(check1 || check2){
+		var prod = document.getElementById('selectProd');
+		var product = prod[prod.selectedIndex].text;
+		var pre = document.getElementById('selectProd').value;
+		var uni = document.getElementById('unidades').value;
+		var tot = document.getElementById('totalLinea').value;
 	
-	var prod = document.getElementById('selectProd');
-	var product = prod[prod.selectedIndex].text;
-	var pre = document.getElementById('selectProd').value;
-	var uni = document.getElementById('unidades').value;
-	var tot = document.getElementById('totalLinea').value;
-	
-	if(document.getElementById('r_servicios').checked == true){
-		var linea = new LineaServicio(product,pre);
-		current_factura.lineaFactura.add(linea);
-			insertarLinetaTabla(current_factura.lineaFactura.end);
-	}else{
-		if(uni == 0 || uni =="" || uni==NaN){
-			alert("introduce una cantidad correcta para este artículo");
+		if(check1){
+			var linea = new LineaServicio(product,pre);
+			
 		}else{
-			var linea = new LineaProducto(product,pre,uni);
-			current_factura.lineaFactura.add(linea);
-			insertarLinetaTabla(current_factura.lineaFactura.end);
+			if(uni == 0 || uni =="" || uni==NaN){
+				alert("introduce una cantidad correcta para este artículo");
+			}else{
+				var linea = new LineaProducto(product,pre,uni);
+				
+			}
+		}	  
+		if(pre!=0){
+				current_factura.lineaFactura.add(linea);
+				insertarLinetaTabla(current_factura.lineaFactura.end);
+		}else{
+			alert("Debes elegir un producto");
 		}
-	}	  
+	}else{
+		alert("Elige el tipo de producto");
+	}
 }
 
 function insertarLinetaTabla(linea) {
@@ -311,6 +320,8 @@ function Navegar () {
 }
 
 function Salir (){
+	if(confirm("¿Seguro que quieres salir y procastinar un rato?"))
+		window.location.href="http://www.cuantocabron.com/";
 	
 }
 
