@@ -64,6 +64,7 @@ function status(){
 		case 2:
 			Bloquear('cabecera',false);
 			Bloquear('listar',false);
+			Bloquear('linea',true);
 			Desbloquear('linea');
 			Desbloquear('validarFactura');
 			document.getElementById('totalLinea').disabled= true;
@@ -97,12 +98,14 @@ function Bloquear(formulario,limpiar){
 		if(limpiar && form1.elements[i].type =='text')
 			form1.elements[i].value = '';
 		if(form1.elements[i].type=='radio')
-			//form1.elements[i].checked=false;
-		if(form1.elements[i].type=='select'){
-			var selNodo = form1.elements[i];
-			while (selNodo.firstChild) {
-    			selNodo.removeChild(myNode.firstChild);
-			}
+			form1.elements[i].checked=false;
+		if(form1.elements[i].type=='select-one'){
+			var select = form1.elements[i];
+		
+			while ( select.childNodes.length >= 1 )
+   			 {
+       		 select.removeChild(select.firstChild);       
+    		}
 		}
 		
 	}
@@ -126,15 +129,45 @@ function borrarTabla(){
  */
 
 function envCabecera(e){
-	//TODO: validación del formulario cabecera...
-	flStado = 2;
-	status();
-	current_cliente = new Cliente(
-									document.getElementById('direccion').value,
-									document.getElementById('nif').value,
-									document.getElementById('nombre').value
-								 );
-	current_factura = new Factura(current_cliente,miLibro.posicion);
+
+	var direccion = document.getElementById('direccion');
+	var nif = document.getElementById('nif');
+	var nombre = document.getElementById('nombre');
+	var validar = true;
+
+	if(direccion.value==""){
+		validar = false;
+		alert("Debes rellenar todos los campos");
+		direccion.focus();	
+	}else{
+		 if(nif.value==""){
+			validar = false;
+			alert("Debes rellenar todos los campos");
+			nif.focus();	
+		}else{
+			if(nombre.value==""){
+				validar = false;
+				alert("Debes rellenar todos los campos");	
+				nombre.focus();
+			}
+		}
+		
+	}
+	var reg = /[0-9]{8}[A-Za-z]/;
+	
+	if (!nif.value.match(reg)){
+		alert("El nif no es correcto");
+		nif.focus();
+		validar = false;
+	}
+	
+	
+	if(validar){
+		flStado = 2;
+		status();
+		current_cliente = new Cliente(direccion.value,nif.value,nombre.value);
+		current_factura = new Factura(current_cliente,miLibro.posicion);
+	}
 	
 }
 
@@ -162,7 +195,6 @@ function first(){
 }
 
 function rellenarCampos(){
-	//TODO: validacion del formulario de lineas
 	document.getElementById('codigo').value = current_factura.codigo;
 	document.getElementById('fecha').value = current_factura.fecha;
 	document.getElementById('direccion').value = current_factura.cliente.direccion;
@@ -219,23 +251,28 @@ function insLinea () {
 	var uni = document.getElementById('unidades').value;
 	var tot = document.getElementById('totalLinea').value;
 	
-	if(document.getElementById('r_servicios').checked == true)
+	if(document.getElementById('r_servicios').checked == true){
 		var linea = new LineaServicio(product,pre);
-	else
-		var linea = new LineaProducto(product,pre,uni);
 		current_factura.lineaFactura.add(linea);
-		insertarLinetaTabla(current_factura.lineaFactura.end);
-		  
+			insertarLinetaTabla(current_factura.lineaFactura.end);
+	}else{
+		if(uni == 0 || uni =="" || uni==NaN){
+			alert("introduce una cantidad correcta para este artículo");
+		}else{
+			var linea = new LineaProducto(product,pre,uni);
+			current_factura.lineaFactura.add(linea);
+			insertarLinetaTabla(current_factura.lineaFactura.end);
+		}
+	}	  
 }
 
 function insertarLinetaTabla(linea) {
-	//var lin = lineaTabla;
-	//alert(lin.data.descripcion);
+
 	var fila = tabla.tBodies[0].insertRow(-1);
 	fila.insertCell(0).textContent = linea.data.descripcion; 
 	fila.insertCell(1).textContent = linea.data.dbPrecio;
 	fila.insertCell(2).textContent = (linea.data.cantidad != undefined)? linea.data.cantidad : "-" ;
-	fila.insertCell(3).textContent = linea.data.total;
+	fila.insertCell(3).textContent = Math.round(linea.data.total*100)/100;
 	
 	
 	ActualizarTotal();
@@ -255,9 +292,10 @@ function NuevaFactura(){
 }
 
 function ActualizarTotal(){
-	document.getElementById('total').value =  current_factura.Total();
-	document.getElementById('iva').value =  current_factura.Iva();
-	document.getElementById('totalIva').value = current_factura.TotalIva();
+	document.getElementById('total').value =  Math.round(current_factura.Total()*100)/100;
+	document.getElementById('iva').value =  Math.round(current_factura.Iva()*100)/100;
+	document.getElementById('totalIva').value = Math.round(current_factura.TotalIva()*100)/100;
+	
 }
 
 
@@ -275,7 +313,7 @@ function Navegar () {
 function Salir (){
 	
 }
-//TODO: alinear el texto en la linea de factura
+
 
 
 
@@ -315,9 +353,9 @@ function ListadoSimple () {
 	
 	popup.onload = function(){ 
 					 cabeceraListado(popup,"Listado Simple");
-					
+					cerrarPopup(popup);
 	
-    var tabla = popup.document.getElementById("tabla");
+    var tabla = popup.document.getElementById("tablap");
         var oTHead = document.createElement("thead");
 	var oFila= oTHead.insertRow(0);
 	oFila.insertCell(0).textContent = "Código";
@@ -353,8 +391,9 @@ function crearVentana (nombre) {
 function ListadoAgrupado(){
 	var popup = crearVentana("Listado Agrupado");
 	popup.onload = function(){ 
+					cerrarPopup(popup);
 					 cabeceraListado(popup,"Listado Agrupado");
-					 var tabla = popup.document.getElementById("tabla");
+					 var tabla = popup.document.getElementById("tablap");
 					 	var tbody =	miLibro.generarListadoAgrupado();
 					 	tabla.appendChild(tbody);
 					};
@@ -373,6 +412,10 @@ function cabeceraListado (popup,texto) {
 		 var header = popup.document.getElementById("contenido");
        header.appendChild(h3);
   
+}
+function cerrarPopup(popup) {
+	var boton =  popup.document.getElementById("cerrar");
+	boton.addEventListener("click",function(){popup.window.close();},false);
 }
 
 window.onload = start;

@@ -132,6 +132,7 @@ function Libro(){
   		total_del_todo=0;
   		cliente = factura.data.cliente;
   		var fila = body.insertRow(-1);
+  		fila.setAttribute("class", "head");
   		fila.insertCell(0).textContent = "Nombre:";
 		fila.insertCell(1).textContent = cliente.nombre;
 		fila.insertCell(2).textContent = "Nif:";
@@ -151,6 +152,7 @@ function Libro(){
   				fila.insertCell(1).textContent = factura.data.codigo;
 				fila.insertCell(2).textContent = factura.data.fecha;
 				fila.insertCell(3).textContent = factura.data.Total();
+				
   				total_del_todo += factura.data.Total();
   				lista.borrar(factura.data);
   			}
@@ -163,6 +165,13 @@ function Libro(){
   				fila.insertCell(1).textContent = "";
 				fila.insertCell(2).textContent = "Total:";
 				fila.insertCell(3).textContent = total_del_todo;
+				fila.setAttribute("class", "foot");
+		fila = body.insertRow(-1);
+				fila.insertCell(0);
+  				fila.insertCell(1);
+				fila.insertCell(2);
+				fila.insertCell(3);
+
   		factura = lista.start;
   	}
   	return body;
