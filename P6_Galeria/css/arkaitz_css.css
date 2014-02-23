@@ -2,20 +2,9 @@
  ****************ESTILOS EJERCICIO 3
  * ******************************** 
  */
- .offset { overflow: hidden; margin: 20px 0 40px 20px; 
- 			padding: 15px /*Añadido para que se puedan ver las sombras de los recuadros de las esquinas */
-			 }
+
         
-        .offset div {
-        	background-color: #eee;
-            float:left;
-            margin-top: 20px;
-            margin-right: 40px;
-            height: 65px;
-            width:160px;
-            text-align: center;
-            
-        }
+      
         
         .examplelabelboxshadow {
             color: #888;
@@ -48,9 +37,9 @@
         }
         
         .exampleboxshadowe{
-        	-webkit-box-shadow: 0px 0px 5px 0px rgba(46, 50, 50, 0.75);
-			-moz-box-shadow:    0px 0px 5px 0px rgba(46, 50, 50, 0.75);
-			box-shadow:         0px 0px 5px 0px rgba(46, 50, 50, 0.75);
+        	-webkit-box-shadow: 0px 0px 7px 0px rgba(46, 50, 50, 0.75);
+			-moz-box-shadow:    0px 0px 7px 0px rgba(46, 50, 50, 0.75);
+			box-shadow:         0px 0px 7px 0px rgba(46, 50, 50, 0.75);
         	
         }
         .exampleboxshadowf{
@@ -169,49 +158,62 @@ text-shadow: 0px 1px black, 0px -1px  black,1px 0px black,-1px 0px black;
  * ****************************************************** 
  */
 #container7 > div { margin-bottom: 10px; border: 1px dotted #000; width: 250px; }
-.box { width: 200px; height: 100px; border: 5px solid gray; background-color: silver; margin: 25px auto; }
+.box { min-width: 200px; height: 100px; border: 5px solid gray; background-color: silver; margin: 25px auto; }
 
 #ex01 div:nth-child(2){
 	transform: translatex(100px) translatey(50px);
+	-webkit-transform: translatex(100px) translatey(50px);
 }
 #ex01 div:nth-child(1):hover{
 	transform: translatex(100px) translatey(50px);
+	-webkit-transform: translatex(100px) translatey(50px);
 }
 
 #ex02 div:nth-child(2){
+	margin-top:120px;
 	transform: scale(2,2);
+	-webkit-transform: scale(2,2);
 }
 
 #ex02 div:nth-child(1):hover{
 	transform: scale(2,2);
+	-webkit-transform: scale(2,2);
 }
 
 #ex03 div:nth-child(3){
+	margin-top:88px;
 	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
 }
 
 #ex03 div:nth-child(4){
 	transform: rotate(45deg);
 	transform-origin:top left;
+	-webkit-transform: rotate(45deg);
+	-webkit-transform-origin:top left;
 }
 
 #ex03 div:nth-child(1):hover{
 	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
 	
 }
 
 #ex03 div:nth-child(2):hover{
 	transform: rotate(45deg);
 	transform-origin:top left;
+	-webkit-transform: rotate(45deg);
+	-webkit-transform-origin:top left;
 }
 
 #ex04 div:nth-child(2){
 	transform: skewX(35deg);
-	
+	-webkit-transform: skewX(35deg);
 }
 
 #ex04 div:nth-child(1):hover{
 	transform: skewX(35deg);
+	-webkit-transform: skewX(35deg);
 }
 
 /**************************************************************
@@ -289,6 +291,7 @@ text-shadow: 0px 1px black, 0px -1px  black,1px 0px black,-1px 0px black;
             width: 420px;
             height: 480px;
             position: relative;
+            overflow: hidden;
         }
         .snowflake {
             color: #fff;

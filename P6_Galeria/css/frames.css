@@ -53,25 +53,58 @@ transform:scale(1.05,1.05);
 .text-center{
 	text-align: center;
 }
-
+ul.menu_ejer {
+	padding-left: 0px;
+}
 .menu_ejer li{
 	list-style:none;
 	color:white;
-	margin-left:0px;
 	cursor:pointer;
 	cursor:hand;
+	z-index: -1;
 }
 
-ul a{
-	margin-top:3px;
+ul.menu_ejer a{
+	margin-top:5px;
+	margin-right:10px;
+	margin-left:10px;
 	padding:5px;
 	font-family: 'Varela Round', sans-serif;
 	font-size:1.5em;
 	font-weight: bold;
+	display:inline-block;
+	height: 100%;
+	width: 100%;
 	
 }
+ul.menu_ejer a:nth-child(even):hover{
+	
+	margin:10px 0px 10px 20px;
+	background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.01) 1%, rgba(191,104,48,0.29) 75%, rgba(191,104,48,0.65) 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(1%,rgba(0,0,0,0.01)), color-stop(75%,rgba(191,104,48,0.29)), color-stop(100%,rgba(191,104,48,0.65)));
+background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 1%,rgba(191,104,48,0.29) 75%,rgba(191,104,48,0.65) 100%);
+background: -o-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 1%,rgba(191,104,48,0.29) 75%,rgba(191,104,48,0.65) 100%);
+background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 1%,rgba(191,104,48,0.29) 75%,rgba(191,104,48,0.65) 100%);
+background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 1%,rgba(191,104,48,0.29) 75%,rgba(191,104,48,0.65) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6bf6830',GradientType=1 );
+transition: all ease-out .5s;
+}
+ul.menu_ejer a:nth-child(odd):hover{
+	
+	margin:10px 20px 10px -10px;
+	background: -moz-linear-gradient(left, rgba(255,170,115,0.65) 0%, rgba(255,170,115,0.31) 83%, rgba(0,0,0,0) 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,170,115,0.65)), color-stop(83%,rgba(255,170,115,0.31)), color-stop(100%,rgba(0,0,0,0)));
+background: -webkit-linear-gradient(left, rgba(255,170,115,0.65) 0%,rgba(255,170,115,0.31) 83%,rgba(0,0,0,0) 100%);
+background: -o-linear-gradient(left, rgba(255,170,115,0.65) 0%,rgba(255,170,115,0.31) 83%,rgba(0,0,0,0) 100%);
+background: -ms-linear-gradient(left, rgba(255,170,115,0.65) 0%,rgba(255,170,115,0.31) 83%,rgba(0,0,0,0) 100%);
+background: linear-gradient(to right, rgba(255,170,115,0.65) 0%,rgba(255,170,115,0.31) 83%,rgba(0,0,0,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6ffaa73', endColorstr='#00000000',GradientType=1 );
+
+transition: all ease-out .5s;
+}
+
 ul > a:nth-child(odd){
-	display:block;
+	
 	height:40px;
 background: -moz-linear-gradient(left, rgba(255,170,115,0.65) 0%, rgba(255,170,115,0.31) 53%, rgba(0,0,0,0) 100%);
 background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,170,115,0.65)), color-stop(53%,rgba(255,170,115,0.31)), color-stop(100%,rgba(0,0,0,0)));
@@ -86,7 +119,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6ffaa73', e
 
 ul > a:nth-child(even){
 	text-align:right;
-	display:block;
+	
 	height:40px;
 background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.01) 1%, rgba(191,104,48,0.29) 45%, rgba(191,104,48,0.65) 100%);
 background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(1%,rgba(0,0,0,0.01)), color-stop(45%,rgba(191,104,48,0.29)), color-stop(100%,rgba(191,104,48,0.65)));
@@ -97,3 +130,63 @@ background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 1%,rgba(
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6bf6830',GradientType=1 );
 
 }
+
+ul.menu_ejer label{
+	display:block;
+}
+.Ejer{
+	text-align: right;
+	font-size: 2.5em;
+	font-family: 'Istok Web', sans-serif;
+	font-weight: bold;
+	margin-top:0px;
+}
+
+input[type="radio"]{
+	height:0px;
+	opacity:0;
+}
+
+h1{
+	margin-top:0px;
+}
+
+.my_pannel_ejer{
+	height: 0px;
+	 scrolling : 'no';
+	position:relative;
+	width: 100%;
+	opacity:0;
+	float: left;
+	transition: height 1s ease 0s,opacity 0.5s ease;
+
+}
+input[type="radio"]:checked + .my_pannel_ejer{
+	
+	height:400px;
+	opacity:1;
+	
+}
+.sombrablanca{
+height: 65px;
+float: left;
+margin-bottom: 30px;
+margin-top: 20px;
+margin-left: 30px;
+}
+.sombrablanca div{
+	background-color: #eee;
+            margin:0px;
+            height: 65px;
+            width:160px;
+            text-align: center;
+	
+}
+.sombrablanca:hover{
+	background:white;
+	-webkit-box-shadow: 0px 0px 18px 18px rgba(255, 255, 255, 1);
+-moz-box-shadow:    0px 0px 18px 18px rgba(255, 255, 255, 1);
+box-shadow:         0px 0px 18px 18px rgba(255, 255, 255, 1);
+transition all 0.3s ease;
+}
+
