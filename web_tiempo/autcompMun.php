@@ -1,29 +1,33 @@
 ﻿<?php
 
-$dwes = new PDO("mysql:host=localhost;dbname=ajax", "root", "");
-$texto = strtolower(trim($_POST["municipio"]));
+$dwes = new PDO("mysql:host=localhost;dbname=ajax", "root", "root");
+$entrada = $_POST["municipio"];
+$texto = strtolower($entrada);
 $sql = "SELECT * FROM LOCALIDADES WHERE TEXTO LIKE '".$texto."%'";
 
 	 $consulta = $dwes->query($sql);
 	 $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
-	  echo "<ul>\n<li>";
-	 
+	
+	
+/*	 $cadena = "<ul>";
 	  
 	 foreach ($resultado as $key => $value) {
 		 
-	 
-	 	 "</li>$value[0]<li>";
+	 	
+	 	$cadena .=$value['TEXTO'];
 	 }
-	 echo "<\\ul>"
-/*   echo
+	  $cadena .= "<//ul>";
+	 echo $cadena;
+	/* echo "<\\ul>"
+/*   echo*/
 
 
 $sugerencias = array();
-foreach($municipios as $indice => $nombre) {
-  if(preg_match('/^('.$texto.')/i',$nombre)) {
-    $sugerencias[] = $nombre;
-    if(count($sugerencias)>20) { break; }
-  }
+$reemplaza = "<b>".$entrada."</b>";
+foreach($resultado as $indice => $nombre) {
+    $sugerencias[] = array(str_ireplace($texto, $reemplaza, $nombre['TEXTO']),$nombre['CODIGO']);//$nombre['TEXTO'];
+    if(count($sugerencias)>20) 
+    	break;
 }
 
 if(isset($_GET["modo"]) && $_GET["modo"] != null) {
@@ -52,5 +56,5 @@ else {
 	else {
 	  echo "[]";
 	}
-}*/
+}
 ?>

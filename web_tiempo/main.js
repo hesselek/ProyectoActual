@@ -17,7 +17,7 @@ Array.prototype.formateaLista = function() {
   codigoHtml = "<ul>";
   for(var i=0; i<this.length; i++) {
     if(i == elementoSeleccionado) {
-      codigoHtml += "<li class=\"seleccionado\">"+this[i]+"</li>";
+      codigoHtml += "<li class=\"seleccionado\">"+this[i][0]+"</li>";
     }
     else {
       codigoHtml += "<li>"+this[i]+"</li>";
@@ -122,4 +122,4 @@ window.onload = function() {
   
   document.getElementById("municipio").onkeyup = autocompleta;
   document.getElementById("municipio").focus();
-}
+};
