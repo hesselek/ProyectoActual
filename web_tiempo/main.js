@@ -2,6 +2,12 @@ var peticion = null;
 var elementoSeleccionado = -1;
 var sugerencias = null;
 var cacheSugerencias = {};
+var respuesta = null;
+var llamada = null;
+
+/****
+ * Código del primer ejercicio. Poco o nada modificado. 
+ */
 
 function inicializa_xhr() {
   if (window.XMLHttpRequest) {
@@ -13,14 +19,15 @@ function inicializa_xhr() {
 
 Array.prototype.formateaLista = function() {
   var codigoHtml = "";
-
+  var est= "";
   codigoHtml = "<ul>";
   for(var i=0; i<this.length; i++) {
     if(i == elementoSeleccionado) {
-      codigoHtml += "<li class=\"seleccionado\">"+this[i][0]+"</li>";
+      codigoHtml +=  "<li class='seleccionado'>"+this[i][0]+"</li>";
     }
     else {
-      codigoHtml += "<li>"+this[i]+"</li>";
+    	//est = this[i];
+      codigoHtml += "<li>"+this[i][0]+"</li>";
     }
   }
   codigoHtml += "</ul>";
@@ -97,7 +104,8 @@ function actualizaSugerencias() {
 
 function seleccionaElemento() {
   if(sugerencias[elementoSeleccionado]) {
-    document.getElementById("municipio").value = sugerencias[elementoSeleccionado];
+    document.getElementById("municipio").value = sugerencias[elementoSeleccionado][2];
+    document.getElementById("oculto").value = 	 sugerencias[elementoSeleccionado][1];
     borraLista();
   }
 }
@@ -114,12 +122,73 @@ function borraLista() {
   document.getElementById("sugerencias").style.display = "none";
 }
 
-window.onload = function() {
-  // Crear elemento de tipo <div> para mostrar las sugerencias del servidor
-  var elDiv = document.createElement("div");
+/*
+ *    Código del segundo ejercicio. La respuesta, va a venir mediante un objeto JSON
+ * 	
+ */
+
+function obtenerTiempo(event){
+	var loc = { localidad : $("#oculto").val() };  // Objeto literal
+
+	var jLocalidad = JSON.stringify(loc);
+
+	var llamada = inicializa_xhr();
+	
+	 llamada.onreadystatechange = function() { 
+        if(llamada.readyState == 4) {
+          if(llamada.status == 200) {
+          	respuesta = llamada.responseText;
+           	procesar();
+            
+          }
+        }
+      };
+	
+	
+	llamada.open('POST', "eltiempo.php", true);
+       //Efectuamos la petición al servidor
+    llamada.send("datos=" + escape(jLocalidad));
+	
+}
+
+function procesar(){
+	//respuesta 
+	alert(respuesta);
+}
+
+
+//Es curioso. El $(this)  de dentro del each no es el mismo que el de fuera. Confuso, muy confuso.
+function obtenerFeeds(){
+	var periodico = $("#misFeed :selected").val();
+	
+	$("#feedID").load("feed.php",{url:periodico},function(responseText, textStatus, oXHR){
+		var texto = "";
+		 var items = $(this).find("item").each(function(){
+		 	var cabecera =  $(this).find("title").text();
+		 	 texto += "<li>"+cabecera+"</li>";
+		 });
+		
+		 $(this).text("");
+		 $(this).append($(texto));
+		
+	});
+	
+}
+
+$(document).ready(function() {
+   var elDiv = document.createElement("div");
   elDiv.id = "sugerencias";
   document.body.appendChild(elDiv);
-  
   document.getElementById("municipio").onkeyup = autocompleta;
   document.getElementById("municipio").focus();
-};
+  
+  $("#myForm").submit(function(e){
+    	e.preventDefault();
+    	obtenerTiempo();  
+    	e.stopPropagation;
+	});
+   
+   $("#misFeed").change(function(){
+   		obtenerFeeds();
+   });
+}); 
