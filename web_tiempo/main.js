@@ -138,8 +138,7 @@ function obtenerTiempo(event){
         if(llamada.readyState == 4) {
           if(llamada.status == 200) {
           	respuesta = llamada.responseText;
-          	
-           	procesar();
+          	procesar();
             
           }
         }
@@ -153,11 +152,16 @@ function obtenerTiempo(event){
 }
 
 function procesar(){
-	var tiempo = JSON.parse(respuesta);
-	for (var dia in tiempo.counters) {
-    console.log(tiempo.counters[dia].prediccion);
-    alert(tiempo);
-}
+
+	var predicciones = JSON.parse(respuesta);
+	var today = predicciones[0];
+	var tomorrow = predicciones[1];
+	
+	alert(today.prob_precipitacion);
+	// (var dia in tiempo.counters) {
+  //  console.log(tiempo.counters[dia].prediccion);
+    alert(tiempo[0]);
+//}
 
 }
 

@@ -36,7 +36,8 @@ if($hora>18)
 	 
 	 /*
 	 * Es necesario castear el contenido de ciertas variables, pues para php son objetos, y al codificarlo,
-	  * se hacía un puñetero lio
+	 * se hacía un puñetero lio.
+	 * con este bucle, creo un objeto JSON que contiene a su vez otros dos objetos, ambos  
 	 */
 	
 	for($i=0;$i<2;$i++){
