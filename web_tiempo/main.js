@@ -132,12 +132,13 @@ function obtenerTiempo(event){
 
 	var jLocalidad = JSON.stringify(loc);
 
-	var llamada = inicializa_xhr();
+	 llamada = inicializa_xhr();
 	
 	 llamada.onreadystatechange = function() { 
         if(llamada.readyState == 4) {
           if(llamada.status == 200) {
           	respuesta = llamada.responseText;
+          	
            	procesar();
             
           }
@@ -145,15 +146,19 @@ function obtenerTiempo(event){
       };
 	
 	
-	llamada.open('POST', "eltiempo.php", true);
-       //Efectuamos la petición al servidor
-    llamada.send("datos=" + escape(jLocalidad));
+	llamada.open('POST',"eltiempo.php", true);
+    llamada.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    llamada.send("datos="+jLocalidad);//escape(jLocalidad)
 	
 }
 
 function procesar(){
-	//respuesta 
-	alert(respuesta);
+	var tiempo = JSON.parse(respuesta);
+	for (var dia in tiempo.counters) {
+    console.log(tiempo.counters[dia].prediccion);
+    alert(tiempo);
+}
+
 }
 
 
