@@ -7,18 +7,38 @@
 <script src="main.js"></script>
 
 
+<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="no title" charset="utf-8"/> 
 
-<style type="text/css">
-body {font-family: Arial, Helvetica, sans-serif;}
-#sugerencias {width:200px; border:1px solid black; display:none; margin-left: 83px;}
-#sugerencias ul {list-style: none; margin: 0; padding: 0; font-size:.85em;}
-#sugerencias ul li {padding: .2em; border-bottom: 1px solid silver;}
-.seleccionado {font-weight:bold; background-color: #FFFF00;}
-</style>
 
 </head>
 
 <body>
+<div class="tiempo">	
+	<img src="img/Reflect.png" id="reflejo" />
+	<p class="variable_text" id="localidad"></p>
+	<h2 class="variable_text" id="temp"></h2>
+	<img src="" id="icono_tiempo" />
+	<p id="descripcion" class="variable_text"></p>
+	<span>Sensaci&oacute;n t&eacute;rmica:</span><span class="variable_text" id="sen_termica"></span><br />
+	<span>Viento:</span><span class="variable_text" id="viento"></span><br />
+	<div id="extra">
+		<hr />
+		<p>Temperatura</p>
+		<span id="temp_min">Minima: </span>
+		<span id="temp_max">M&aacute;xima:</span>
+		<p>Sensacion T&eacute;rmica</p>
+		<span id="sen_min">M&iacute;nima:</span>
+		<span id="sen_max">M&aacute;xima: </span>
+		<p>Humedad Relativa</p>
+		<span id="hum_min">M&iacute;nima</span>
+		<span id="hum_max">M&aacute;xima</span>
+	
+	</div>
+	
+</div>
+
+	
+	
 <h1>Autocompletar texto</h1>
 
 <form action="http://google.es" method="post" id="myForm">
@@ -28,10 +48,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   <input type="submit" value="enviar" id="enviar" />
 </form>
 
-<div id="eltiempo">
-	
-	
-</div>
 
 <select id="misFeed">
 	<option value="http://ep00.epimg.net/rss/elpais/portada.xml">El pais</option>

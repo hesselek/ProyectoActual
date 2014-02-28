@@ -143,9 +143,11 @@ function obtenerTiempo(event){
           }
         }
       };
-	
-	
+	/**  hack de pruebas:
+	 * 
+	 */
 	llamada.open('POST',"eltiempo.php", true);
+	//llamada.open('POST',"eltiempo.php", true);
     llamada.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     llamada.send("datos="+jLocalidad);//escape(jLocalidad)
 	
@@ -156,11 +158,13 @@ function procesar(){
 	var predicciones = JSON.parse(respuesta);
 	var today = predicciones[0];
 	var tomorrow = predicciones[1];
-	
-	alert(today.prob_precipitacion);
-	// (var dia in tiempo.counters) {
-  //  console.log(tiempo.counters[dia].prediccion);
-    alert(tiempo[0]);
+	$(".variable_text").text("");
+	$('#localidad').append($('#municipio').val());
+    $("#temp").append(today.temperatura.actual+" &deg;C");
+    $('#descripcion').append(today.descripcion);
+    $('#sen_termica').append(today.sens_termica.actual);
+    $('#viento').append(today.velocidad_v+' Km/h<span class="compas"></span> '+today.direccion_v);
+    $('#icono_tiempo').attr("src","img/iconos_tiempo/"+today.icono+".png");
 //}
 
 }

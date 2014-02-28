@@ -15,6 +15,7 @@ $tiempo =  simplexml_load_file("http://www.aemet.es/xml/municipios/localidad_".$
  /*
   * Esto me permite accedar al dato concreto, según la hora del día en que se trate
   */
+  
 $hora = date("H");
 $periodo = 3;
 if($hora>6)
@@ -23,7 +24,7 @@ if($hora>12)
 	$periodo++;
 if($hora>18)
 	$periodo++;
-
+echo $periodo;
 
 	
 
@@ -46,6 +47,7 @@ if($hora>18)
 		$predic_dia['descripcion'] = (String) $predic->estado_cielo[$periodo]['descripcion'];
 		$predic_dia['direccion_v'] = (String) $predic->viento[$periodo]->direccion;
 		$predic_dia['velocidad_v'] = (string) $predic->viento[$periodo]->velocidad;
+		$predic_dia['icono']	   = (String) $predic->estado_cielo[$periodo];
 		
 		foreach ($array_tem as $key => $value) {
 			$arr_aux = array();
