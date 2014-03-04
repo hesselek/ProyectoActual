@@ -24,7 +24,7 @@ if($hora>12)
 	$periodo++;
 if($hora>18)
 	$periodo++;
-echo $periodo;
+
 
 	
 
