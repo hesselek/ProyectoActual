@@ -154,39 +154,76 @@ function obtenerTiempo(event){
 }
 
 function procesar(){
-
+	var dias = ['#today','#tomorrow'];
 	var predicciones = JSON.parse(respuesta);
-	var today = predicciones[0];
-	var tomorrow = predicciones[1];
-	$(".variable_text").text("");
-	$('#localidad').append($('#municipio').val());
-    $("#temp").append(today.temperatura.actual+" &deg;C");
-    $('#descripcion').append(today.descripcion);
-    $('#sen_termica').append(today.sens_termica.actual);
-    $('#viento').append(today.velocidad_v+' Km/h<span class="compas"></span> '+today.direccion_v);
-    $('#icono_tiempo').attr("src","img/iconos_tiempo/"+today.icono+".png");
+	//var predic = predicciones[0];
+	//var tomorrow = predicciones[1];
+	for (var i=0; i<predicciones.length;i++){
+		var predic = predicciones[i];
+	var dia = dias[i];
+	$(dia).find(".variable_text").text("");
+	$(dia).find('.localidad').append($('#municipio').val()+' '+predic.fecha);
+   	$(dia).find(".temp").append(predic.temperatura.actual+" &deg;C");
+	$(dia).find('.descripcion').append(predic.descripcion);
+ 	$(dia).find('.sen_termica').append(predic.sens_termica.actual);
+   	$(dia).find('.precipitacion').append(predic.prob_precipitacion+'%');
+ 	$(dia).find('.viento').append(predic.velocidad_v+' Km/h<span class="compas"></span> '+predic.direccion_v);
+  	$(dia).find('.icono_tiempo').attr("src","img/iconos_tiempo/"+predic.icono+".png");
+    $(dia).find('.temp_min').append(predic.temperatura.minima+" &deg;C");
+    $(dia).find('.temp_max').append(predic.temperatura.maxima+" &deg;C");
+    $(dia).find('.sen_min').append(predic.sens_termica.minima+" &deg;C");
+    $(dia).find('.sen_max').append(predic.sens_termica.maxima+" &deg;C");
+    $(dia).find('.hum_min').append(predic.humedad_relativa.minima+'%');
+    $(dia).find('.hum_max').append(predic.humedad_relativa.maxima+'%');
+    
+   }
 //}
 
 }
 
 
-//Es curioso. El $(this)  de dentro del each no es el mismo que el de fuera. Confuso, muy confuso.
 function obtenerFeeds(){
 	var periodico = $("#misFeed :selected").val();
-	
-	$("#feedID").load("feed.php",{url:periodico},function(responseText, textStatus, oXHR){
-		var texto = "";
-		 var items = $(this).find("item").each(function(){
-		 	var cabecera =  $(this).find("title").text();
-		 	 texto += "<li>"+cabecera+"</li>";
-		 });
-		
-		 $(this).text("");
-		 $(this).append($(texto));
-		
-	});
-	
+	var xml = $.ajax({
+      url: "feed.php",
+     data: {url:periodico},
+      success: function(xml){
+         $('#feedID').html("");
+         cargar_rss(xml, '#feedID');
+           
+         
+         
+      }
+  });
 }
+
+	
+	
+
+	
+	
+
+
+/*  Es un HORROR la que hay que montar para que esto funcione */
+function cargar_rss(xml, id_contenedor){
+   var limit = xml.getElementsByTagName('item').length;//obtengo la cantidad de entradas
+   var rss = "";//comienzo el string
+   for (var l=1; l<=limit; l++){// un for desde 1 hasta la cantidad de entradas
+      //obtengo titulo vinculo fecha de publicación y descripción
+      var title= xml.getElementsByTagName('title').item(l+1).firstChild.data;
+      var url = xml.getElementsByTagName('link').item(l+1).firstChild.data;
+      var pubDate= xml.getElementsByTagName('pubDate').item(l-1).firstChild.data;
+      var description = xml.getElementsByTagName('description').item(l+1).firstChild.data;
+      	description = description.slice(0,200); //recorto el texto para que quede mas pequeño, y ademas, tenia ganas de usar esto
+      var date = pubDate.split(" +");
+      rss = "<fecha>"+date[0]+"<fecha><br/><titulo><a href=\""+url+"\">"+title+"</a></titulo><br/><descripcion>"+description+"</descripcion><hr />";
+      $(id_contenedor).append(rss);
+   }
+}
+
+
+
+
 
 $(document).ready(function() {
    var elDiv = document.createElement("div");

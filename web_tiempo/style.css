@@ -1,12 +1,75 @@
 
 
 body {font-family: Arial, Helvetica, sans-serif;background-image: url("img/bg.jpg");}
-#sugerencias {width:200px; border:1px solid black; display:none; margin-left: 83px;}
+#sugerencias {width:200px; border:1px solid black; display:none; margin-left: 125px;z-index: 99; position: absolute; top:160px;
+	background: rgba(75,75,75,0.8);
+}
 #sugerencias ul {list-style: none; margin: 0; padding: 0; font-size:.85em;}
 #sugerencias ul li {padding: .2em; border-bottom: 1px solid silver;}
 .seleccionado {font-weight:bold; background-color: #FFFF00;}
 
+#myForm{
+	color:white;
+	margin-left:40px;
+	-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+border:2px solid white;
+	background: rgba(75,75,75,0.8);
+	padding:5px;
+	width:60%;
+	
+}
+#misFeed{
+	color:white;
+	margin-left:40px;
+	-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+border:2px solid white;
+	background: rgba(75,75,75,0.8);
+	padding:5px;
+	width:60%;
+}
+#feedID{
+	color:white;
+	
+	margin-top:20px;
+	-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+border:2px solid white;
+	background: rgba(75,75,75,0.8);
+	padding:5px;
+	
+}
 
+#feedID li{
+	list-style-type: none;
+}
+
+#feedID a{
+	color:#00FF00;
+}
+
+.seccion_noticias{
+	width: 55%;
+	float: right;
+	color:gray;
+
+}
+
+.seccion_tiempo{
+		color:gray;
+	
+	display:inline-block;
+	width: 40%;
+	margin-right:40px;
+}
+
+h2{
+	text-align: center;
+}
 
 #reflejo{
 	background: rgba(255,255,255,0.05);
@@ -22,16 +85,32 @@ body {font-family: Arial, Helvetica, sans-serif;background-image: url("img/bg.jp
 .tiempo{
 	background: url("img/Shine0.png"),url("img/Back1.png");
 	background-repeat:no-repeat;
-	position:relative;
-	top:25px;
-	left:25px;
+	float:left;
 	color:white;
 	height: 355px;
 	width: 191px;
 	padding-left: 25px;
 	padding-top: 25px;
 	z-index: 1;
+	
 }
+
+
+#today{
+	position:relative;
+	top:0px;
+	
+}
+
+#tomorrow{
+	position:relative;
+	top:0px;
+	
+	
+	
+}
+
+
 .tiempo h2{
 	margin-top:12px;
 	margin-bottom:10px;
@@ -60,7 +139,7 @@ top: 7px;
 	font-size:.8em;
 	font-weight: bold;
 }
-#icono_tiempo{
+.icono_tiempo{
 	height: 26%;
 width: auto;
 position: absolute;
@@ -68,7 +147,7 @@ top: 43px;
 left: 63px;
 z-index: -1;
 }
-#localidad{
+.localidad{
 	font-size:0.8em;
 }
 hr { height: 2px;

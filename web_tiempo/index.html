@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Ejercicio 19 - Autocompletar</title>
+<title>Tiempo y noticias</title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="main.js"></script>
 
@@ -13,42 +13,70 @@
 </head>
 
 <body>
-<div class="tiempo">	
+	<div class="seccion_tiempo">
+		<h2>El tiempo</h2>
+		<form action="http://google.es" method="post" id="myForm">
+  <label for="municipio">Municipio</label> &nbsp;&nbsp;
+  <input type="text" id="municipio" name="municipio" size="30" />
+  <input type="hidden" id="oculto" name="oculto" value="" />
+  <input type="submit" value="enviar" id="enviar" />
+	</form>
+<div class="tiempo" id="today">	
 	<img src="img/Reflect.png" id="reflejo" />
-	<p class="variable_text" id="localidad"></p>
-	<h2 class="variable_text" id="temp"></h2>
-	<img src="" id="icono_tiempo" />
-	<p id="descripcion" class="variable_text"></p>
-	<span>Sensaci&oacute;n t&eacute;rmica:</span><span class="variable_text" id="sen_termica"></span><br />
-	<span>Viento:</span><span class="variable_text" id="viento"></span><br />
+	<p class="variable_text localidad" > </p>
+	<h2 class="variable_text temp"> </h2>
+	<img src="" class="icono_tiempo" />
+	<p class="descripcion variable_text" > </p>
+	<span>Sensaci&oacute;n t&eacute;rmica:</span><span class="variable_text sen_termica" > </span><br />
+	<span>Viento:</span><span class="variable_text viento" > </span><br />
+	<span>Prob. precipitacion:</span><span class="variable_text precipitacion" > </span><br />
 	<div id="extra">
 		<hr />
 		<p>Temperatura</p>
-		<span id="temp_min">Minima: </span>
-		<span id="temp_max">M&aacute;xima:</span>
+		<span>Minima :</span><span class="variable_text temp_min"> </span>
+		<span>M&aacute;xima: </span><span class="variable_text temp_max"> </span>
 		<p>Sensacion T&eacute;rmica</p>
-		<span id="sen_min">M&iacute;nima:</span>
-		<span id="sen_max">M&aacute;xima: </span>
+		<span>M&iacute;nima: </span><span class="variable_text sen_min"> </span>
+		<span>M&aacute;xima: </span><span class="variable_text sen_max"> </span>
 		<p>Humedad Relativa</p>
-		<span id="hum_min">M&iacute;nima</span>
-		<span id="hum_max">M&aacute;xima</span>
+		<span>M&iacute;nima: </span><span class="variable_text hum_min"> </span>
+		<span>M&aacute;xima: </span><span class="variable_text hum_max"> </span>
 	
 	</div>
 	
 </div>
 
+	<div class="tiempo" id="tomorrow">	
+		<img src="img/Reflect.png" id="reflejo" />
+	<p class="variable_text localidad" > </p>
+	<h2 class="variable_text temp"> </h2>
+	<img src="" class="icono_tiempo" />
+	<p class="descripcion variable_text" > </p>
+	<span>Sensaci&oacute;n t&eacute;rmica:</span><span class="variable_text sen_termica" > </span><br />
+	<span>Viento:</span><span class="variable_text viento" > </span><br />
+	<span>Prob. precipitacion:</span><span class="variable_text precipitacion" > </span><br />
+	<div id="extra">
+		<hr />
+		<p>Temperatura</p>
+		<span>Minima :</span><span class="variable_text temp_min"> </span>
+		<span>M&aacute;xima: </span><span class="variable_text temp_max"> </span>
+		<p>Sensacion T&eacute;rmica</p>
+		<span>M&iacute;nima: </span><span class="variable_text sen_min"> </span>
+		<span>M&aacute;xima: </span><span class="variable_text sen_max"> </span>
+		<p>Humedad Relativa</p>
+		<span>M&iacute;nima: </span><span class="variable_text hum_min"> </span>
+		<span>M&aacute;xima: </span><span class="variable_text hum_max"> </span>
 	
+	</div>
 	
-<h1>Autocompletar texto</h1>
-
-<form action="http://google.es" method="post" id="myForm">
-  <label for="municipio">Municipio</label> &nbsp;&nbsp;
-  <input type="text" id="municipio" name="municipio" size="30" />
-  <input type="hidden" id="oculto" name="oculto" value="" />
-  <input type="submit" value="enviar" id="enviar" />
-</form>
+	</div>
+	
+</div>
 
 
+
+<div class="seccion_noticias">
+<h2>Las noticias</h2>
 <select id="misFeed">
 	<option value="http://ep00.epimg.net/rss/elpais/portada.xml">El pais</option>
 	<option value="http://20minutos.feedsportal.com/c/32489/f/478284/index.rss">20 minutos</option>
@@ -58,6 +86,8 @@
 	
 <div id="feedID">
 	
+</div>
+<div id="feed"></div>
 </div>
 </body>
 </html>

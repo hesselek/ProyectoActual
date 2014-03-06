@@ -43,11 +43,24 @@ if($hora>18)
 	
 	for($i=0;$i<2;$i++){
 		$predic = $tiempo->prediccion->dia[$i];
+		$predic_dia['fecha']= (String) $predic['fecha'];
 		$predic_dia['prob_precipitacion'] = (String)$predic->prob_precipitacion[$periodo];
 		$predic_dia['descripcion'] = (String) $predic->estado_cielo[$periodo]['descripcion'];
 		$predic_dia['direccion_v'] = (String) $predic->viento[$periodo]->direccion;
 		$predic_dia['velocidad_v'] = (string) $predic->viento[$periodo]->velocidad;
 		$predic_dia['icono']	   = (String) $predic->estado_cielo[$periodo];
+		
+		if($predic_dia['descripcion']==""){
+		$estado = $predic->estado_cielo;//
+			foreach ($estado as $key => $value) {
+			
+				if($value['descripcion'] !=""){
+					$predic_dia['descripcion'] = (String) $value['descripcion'];
+					$predic_dia['icono']	   = (String) $value;
+				}
+			}
+		}
+		
 		
 		foreach ($array_tem as $key => $value) {
 			$arr_aux = array();
