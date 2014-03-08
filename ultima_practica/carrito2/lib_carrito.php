@@ -12,7 +12,7 @@ function __construct()
 {
 $this->num_productos=0;
 }
-//introducir un artículo en el carrito
+//introducir un artï¿½culo en el carrito
 function introduce_producto($id_prod,$nombre_prod,$precio_prod)
 {
 if ($this->num_productos==0 || ! in_array($id_prod,$this->array_id_prod))
@@ -54,8 +54,5 @@ function elimina_producto($linea)
 {$this->array_id_prod[$linea]=0;
 }
 }
-if (!isset($_SESSION["ocarrito"]))
-{
-	$_SESSION["ocarrito"]=new carrito();
-}
+
 ?>

@@ -105,5 +105,7 @@ form a{
 	border:2px solid red;
 	color:red;
 }
-
-/* Esta parte de la hoja de estilo es específica de este proyecto */
+.centrado{
+	text-align: center;
+}
+/* Esta parte de la hoja de estilo es especï¿½fica de este proyecto */

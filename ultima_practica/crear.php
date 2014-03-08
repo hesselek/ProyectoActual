@@ -3,11 +3,12 @@ include('funciones.php');
 
 //funcion que me permite saber si un usuario est� logeado o no
 
-cabecera('Seleccionar Idioma y Categoria');
+cabecera('Sube una foto');
 echo "<div id=\"contenido\">\n";
 echo "<h1>Elige las opciones</h1>";
-$dwes = new PDO("mysql:host=localhost;dbname=carritocompra", "root", "root");
-
+//$dwes = new PDO("mysql:host=localhost;dbname=carritocompra", "root", "root");
+    $conexion = new mysqli();
+	$conexion->connect("localhost","root","root","carritocompra");
 
 if(isset($_POST['libros'])){
 		
@@ -28,20 +29,30 @@ if(isset($_POST['libros'])){
 	
 	if ($foto_name != "" AND $foto_size != 0 AND $extension !=''){
 
-			$f1= fopen($foto_temporal,"rb");
+			$f1= fopen($foto_temporal,"r+b");
 			$foto_reconvertida = fread($f1, $foto_size);
 			$foto_reconvertida=addslashes($foto_reconvertida);
-			
-			$meter="INSERT INTO fotos (num_ident, imagen, nombre, tamano, formato) ";
+			fclose($f1);
+			//  $foto_reconvertida= mysql_escape_string($foto_reconvertida);
+			  $libros = $_POST['libros'];
+			 $query = "INSERT INTO fotos(num_ident, imagen, nombre, tamano, formato) VALUES ('$libros', '$foto_reconvertida','$foto_name','$foto_size','$extension')";
+			; 
+			 if (! $conexion->query($query)) {
+    printf("Errormessage: %s\n", $conexion->error);
+}
+			 
+		/*	$meter="INSERT INTO fotos (num_ident, imagen, nombre, tamano, formato)";
 			$meter .=" VALUES(:id,:foto,:nombre,:tamano,:formato)";
 			$insert = $dwes->prepare($meter);
 			$insert->bindParam(':id', $_POST['libros']);
-			$insert->bindParam(':foto',$foto_reconvertida);
+			$insert->bindParam(':foto',$foto_reconvertida,PDO::PARAM_LOB);
 			$insert->bindParam(':nombre',$foto_name);
 			$insert->bindParam(':tamano', $foto_size);
 			$insert->bindParam(':formato', $extension);
-			$insert->execute();
+			$insert->execute();*/
+			$conexion->close();
 			echo "<h2>foto subida con exito</h2>";
+			echo "<div class='centrado'><a href='entrar.php'>Volver</a></div>";
 	}	
 }else{
 
@@ -50,14 +61,11 @@ if(isset($_POST['libros'])){
 if(!isset($_SESSION['usuario'])){
 	echo"<div class='error'><h2>Debes logearte para acceder a esta página</h2></div>";
 }else{
+			
+		$resultado= $conexion->query("SELECT libros.TID, libros.TITULO FROM libros WHERE libros.tID NOT IN (SELECT fotos.num_ident FROM fotos)");
 		
-	try{
-		$consulta = $dwes->query("SELECT libros.ID, libros.TITULO FROM libros WHERE libros.ID NOT IN (SELECT fotos.num_ident FROM fotos)");
-		$resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
-	}catch(PDOException $e){
-		echo $e->getMessage();
-	}
-	$dwes = null;
+	
+
 	
 	echo"<form ENCTYPE='multipart/form-data' method='POST' action=''>
  	Selecciona el libro
@@ -65,7 +73,7 @@ if(!isset($_SESSION['usuario'])){
  		<option value=''></option>";
  		
  			foreach ($resultado as $key => $value) {
-				 echo "<option value='".$value[ID]."'>".$value['TITULO']."</option>";
+				 echo "<option value='".$value['TID']."'>".$value['TITULO']."</option>";
 			 }
  		
     echo "</select><br />
@@ -80,5 +88,4 @@ if(!isset($_SESSION['usuario'])){
 echo "</div>";
 pie();
 ?>
-</body>
-</html>
+

@@ -3,15 +3,18 @@ include('funciones.php');
 
 //funcion que me permite saber si un usuario est� logeado o no
 
-cabecera('Finalizar compra');
+cabecera('Seleccionar Idioma y Categoria');
 echo "<div id=\"contenido\">\n";
-echo "<h1>Finalizar Compra</h1>";
+echo "<h1>Elige las opciones</h1>";
 
 
 if(!isset($_SESSION['usuario'])){
 	echo"<div class='error'><h2>Debes logearte para acceder a esta p�gina</h2></div>";
 }else{
-	
+	$_SESSION['lenguajes'] = 0;
+	$_SESSION['categorias'] = 0;	
+	$idiomas = getOpciones('idioma');
+	$categorias = getOpciones('categorias');
  ?>
  <form action="introducir.php" method="post">
  	<label for="lenguajes">Idiomas:</label>
@@ -46,4 +49,5 @@ if(!isset($_SESSION['usuario'])){
 echo "</div>";
 pie();
 ?>
-
+</body>
+</html>

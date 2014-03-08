@@ -1,7 +1,12 @@
 <?php
 //incluido aqui para no tener que arrastrarlo por todos los scripts
-session_start();
 include 'carrito2/lib_carrito.php';
+session_start();
+
+if (!isset($_SESSION["ocarrito"]))
+{
+	$_SESSION["ocarrito"]=new carrito();
+}
 function cabecera($texto) 
 {
     print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?".">
@@ -26,10 +31,10 @@ function cabecera($texto)
 <div id=\"menu\">
 <ul>
    <font size=1>
-  <li><a href=\"index.php\">P�gina inicial</a></li>
+  <li><a href=\"index.php\">P&aacute;gina inicial</a></li>
   <li><a href=\"entrar.php\">Entrar</a></li>
-  <li><a href=\"crear.php\">Asignaci�n de im�genes</a></li>
-  <li><a href=\"introducir.php\">Comprar</a></li>
+  <li><a href=\"crear.php\">Asignaci&oacute;n de im&aacute;genes</a></li>
+  <li><a href=\"comprar.php\">Comprar</a></li>
   <li><a href=\"visualizar.php\">Mis pedidos</a></li>
   </font>
 </ul>  
@@ -45,7 +50,7 @@ function pie()
 
 <div id="pie">
 <address>
-2� D.A.W. 
+2&deg; D.A.W. 
 </address>
 
 </div>
@@ -71,6 +76,7 @@ function validarUser($user,$pass){
 		echo $e->getMessage();
 	}
 	$dwes = null;
+	
 	return $resultado;
 		
 }

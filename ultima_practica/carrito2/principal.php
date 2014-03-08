@@ -1,7 +1,7 @@
    	<title>Carrito con B.D.</title> 
 	<br />
  <?php
- //
+ session_start();
 $conexion=new mysqli();
 $conexion->connect("localhost","root","root" ,"carritocompra");
 //para la paginaci�n de resultados
@@ -44,7 +44,7 @@ INNER JOIN categorias ON libros.CATEGORIA = categorias.id_categoria
 INNER JOIN editorial ON libros.EID = editorial.EID
 LEFT JOIN fotos ON libros.TID = fotos.num_ident";
 
-if($_SESSION['lenguajes']!=0 || $_SESSION['categorias']!=0)
+if($_SESSION['lenguajes']!=0 OR $_SESSION['categorias']!=0)
 	$cadsql.=" WHERE ";
 if($_SESSION['lenguajes']!=0)
 	$cadsql.=" libros.LID =".$_SESSION['lenguajes'];
@@ -68,11 +68,11 @@ echo "<tr><th colspan=8>Productos en la cesta: ".$_SESSION["ocarrito"]->num_prod
 echo "<tr><td align=center>Autor</td>";
 echo "<td align=center>Idioma</td>";
 echo "<td align=center>Titulo</td>";
-echo "<td align=center>Categoría</td>";
+echo "<td align=center>Categor&iacute;a</td>";
 echo "<td align=center>Editorial</td>";
 echo "<td align=center>Precio</td>";
 echo "<td align=center>Imagen</td>";
-echo "<td align=center>Añadir</td></tr>";
+echo "<td align=center>A&ntilde;adir</td></tr>";
 ## recorrido del conjunto de resultados devuelto por la SELECT
 while ($salida=$resultado->fetch_array())
 {
@@ -84,7 +84,7 @@ while ($salida=$resultado->fetch_array())
 	if($salida[8]== null){
 		 echo "<td align='center' ><img src='carrito2/images/no_foto.jpg' width='75' height='75' /></td>";
 	}else {
-		echo "<td align='center'><img src='verfoto.php?foto=".$salida[0]."'/></td>";
+		echo "<td align='center'><a href='./verfoto.php?foto=".$salida[0]."'><img src='./verfoto.php?foto=".$salida[0]."'/></a></td>";
 		//echo "<td><a href='verfoto.php?foto=".$salida[0]."'/>ver</a></td>";
 	}
 /*	if($registro['formato']=="image/png"){
@@ -98,8 +98,8 @@ while ($salida=$resultado->fetch_array())
 }
 
 $conexion->close();
-echo "<tr><td colspan=2>Número de registros encontrados: ".$num_total_registros."</td>";
-echo "<td>Se muestran paginas de ". $TAMANO_PAGINA. " registros cada una"."<br>";
+echo "<tr><td colspan=2>N&uacute;mero de registros encontrados: ".$num_total_registros."</td>";
+echo "<td>Se muestran paginas de ". $TAMANO_PAGINA. " registros cada una."."<br>";
 echo "Mostrando pagina ".$pagina." de ".$total_paginas."</td>";
 echo "<td colspan=5 align='center'>";
 if ($total_paginas>1)
@@ -116,11 +116,9 @@ if ($total_paginas>1)
 			echo "</td></tr>";
 		}	
 	
-
-
-
 ?> 
-<tr><td colspan=4 align="center"><a href="carrito2/ver_carrito.php">Ver carrito </a></td>
-	<td colspan=4 align="center"><a href="carrito2/borrar_carrito.php">Anular compra</a></td></tr>
+<tr><td colspan=4 align="center"><a href="./ver_carrito.php">Ver carrito </a></td>
+	<td colspan=4 align="center"><a href="./borrar_carrito.php">Anular compra</a></td></tr>
 </table>
-<?php print_r($_SESSION); ?>
+
+
